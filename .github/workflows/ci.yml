@@ -77,3 +77,39 @@ jobs:
             dist/worker.js
           if-no-files-found: error
           retention-days: 30
+
+      - name: Measure browser test concurrency
+        run: |
+          node --input-type=module <<'JS'
+          import assert from "node:assert/strict";
+          import { spawnSync } from "node:child_process";
+          import { availableParallelism } from "node:os";
+          import { testArguments } from "./scripts/test.mjs";
+
+          console.log("BROWSER_BENCH_RUNNER " + availableParallelism());
+          for (const [index, workers] of [1, 2, 2, 1, 1, 2].entries()) {
+            process.env.ATLANTA_BROWSER_CONCURRENCY = String(workers);
+            const args = await testArguments("browser");
+            const start = performance.now();
+            const result = spawnSync(process.execPath, ["--test-reporter=tap", ...args], {
+              encoding: "utf8",
+              timeout: 120000,
+              maxBuffer: 16 * 1024 * 1024,
+            });
+            const durationMs = Math.round(performance.now() - start);
+            const totals = Object.fromEntries(
+              [...result.stdout.matchAll(/^# (tests|pass|fail|cancelled|skipped|todo) (\d+)$/gm)]
+                .map(([, name, value]) => [name, Number(value)]),
+            );
+            console.log("BROWSER_BENCH " + JSON.stringify({
+              run: index + 1, pair: Math.floor(index / 2) + 1, workers, durationMs, ...totals,
+            }));
+            if (result.status !== 0) {
+              process.stderr.write(result.stdout + result.stderr);
+              throw result.error || new Error("Browser tests failed");
+            }
+            assert.deepEqual(totals, {
+              tests: 41, pass: 41, fail: 0, cancelled: 0, skipped: 0, todo: 0,
+            });
+          }
+          JS
