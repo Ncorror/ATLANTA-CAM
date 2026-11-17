@@ -1,0 +1,91 @@
+/* Каталог инструментов и просмотр кадров NC. Порядок каскада: см. index.css. */
+#catalogDialog {
+  width: min(485px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+}
+
+.catalogBody {
+  display: grid;
+  grid-gap: 9px;
+  padding: 16px;
+}
+
+.catalogBody label {
+  margin: 0;
+}
+
+.catalogBody details {
+  padding: 8px;
+  border: 1px solid #dce4ec;
+  border-radius: 7px;
+}
+
+.catalogBody details .row {
+  margin-top: 8px;
+}
+
+.catalogBody small {
+  color: #48637b;
+  line-height: 1.4;
+}
+
+.catalogBody #catalogStatus {
+  display: block;
+  min-height: 1.3em;
+}
+
+.catalogBody #catalogStatus[data-error="true"] {
+  color: #b12639;
+}
+
+.catalogSave button {
+  width: 100%;
+}
+
+.sketchTools .tool-machining.active {
+  background: var(--mark-color, #d52b3e);
+  border-color: var(--mark-color, #d52b3e);
+  color: #fff;
+}
+
+.codeActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  grid-gap: 4px;
+}
+
+.codeView {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.codePane .codeView textarea {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  min-height: 0;
+  background: transparent;
+  line-height: 19px;
+}
+
+.codeFrameHighlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: #315376;
+  box-shadow: inset 3px 0 #76caff;
+  pointer-events: none;
+}
+
+#codeFrameStatus {
+  color: #bbdeff;
+  font-weight: bold;
+}

@@ -1,0 +1,77 @@
+name: CI
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check Termux scripts
+        run: shellcheck scripts/check.sh scripts/push.sh
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24.22.3"
+          cache: npm
+
+      - run: npm ci
+      - run: npx --no-install playwright install --with-deps --only-shell chromium
+
+      - name: Verify and package
+        id: package
+        run: npm run package
+
+      - name: Generate formatting patch
+        if: ${{ failure() && steps.package.outcome == 'failure' && hashFiles('reports/verification.json') != '' }}
+        run: |
+          if node -e 'process.exit(require("./reports/verification.json").checks.some(check => check.name === "format" && !check.passed) ? 0 : 1)'; then
+            npm run format
+            git diff --binary -- > reports/prettier.patch
+          fi
+
+      - name: Upload verification reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: atlanta-cam-reports
+          path: |
+            reports/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Upload release build
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: atlanta-cam-release
+          path: |
+            dist/ATLANTA-Contour-Offline-*.html
+            dist/manifest.json
+            releases/ATLANTA-CAM-*.zip
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload debug build
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: atlanta-cam-debug
+          path: |
+            dist/index.html
+            dist/app.js
+            dist/app.js.map
+            dist/style.css
+            dist/worker.js
+          if-no-files-found: error
+          retention-days: 30

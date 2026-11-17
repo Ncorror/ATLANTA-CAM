@@ -1,0 +1,608 @@
+/* Компоновка рабочего пространства и адаптивность. Порядок каскада: см. index.css. */
+:root {
+  --app-topbar: 44px;
+  --app-workflow: 36px;
+  --preview-player: 40px;
+}
+
+.topbar {
+  height: var(--app-topbar);
+  padding: 0 16px;
+  grid-gap: 16px;
+}
+
+.brand strong {
+  font-size: 15px;
+}
+
+.brand small {
+  font-size: 7px;
+  margin-top: 2px;
+}
+
+.mark {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+}
+
+.topActions button {
+  min-height: 27px;
+}
+
+.workflow {
+  height: var(--app-workflow);
+  padding: 0 14px;
+  grid-gap: 8px;
+}
+
+.workflow button {
+  min-height: 26px;
+}
+
+.mode {
+  font-size: 11px;
+  padding: 0 10px;
+}
+
+.statusbar {
+  display: none;
+}
+
+.layout,
+.show-code .layout {
+  height: calc(100vh - var(--app-topbar) - var(--app-workflow));
+  min-height: 0;
+  position: relative;
+}
+
+.settings,
+.show-code .settings {
+  height: 100%;
+  min-height: 0;
+}
+
+.workspace,
+.show-code .workspace {
+  height: 100%;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.canvasWrap,
+.drawing .canvasWrap {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.codePane,
+.show-code .codePane {
+  height: 100%;
+  min-height: 0;
+}
+
+.codePane textarea {
+  min-height: 0;
+}
+
+.viewHeader {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  min-height: 0;
+  padding: 5px 12px;
+  grid-gap: 8px;
+  border: 0;
+  pointer-events: none;
+  background: transparent;
+}
+
+.viewHeader > div:first-child {
+  min-width: 0;
+  max-width: 50%;
+}
+
+.viewHeader h1 {
+  font-size: 13px;
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.viewHeader p {
+  font-size: 9px;
+  line-height: 12px;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.viewButtons {
+  pointer-events: auto;
+  align-items: center;
+  grid-gap: 4px;
+}
+
+.viewButtons button {
+  min-height: 26px;
+  padding: 4px 7px;
+  font-size: 10px;
+}
+
+.canvasTag {
+  top: 45px;
+  font-size: 8px;
+}
+
+.activeContourBadge {
+  top: 44px;
+  font-size: 9px;
+  padding: 4px 7px;
+}
+
+.canvasPrompt {
+  top: 69px;
+}
+
+.viewLegend {
+  grid-gap: 10px;
+  font-size: 8px;
+}
+
+.previewBar {
+  display: flex;
+  align-items: center;
+  flex: 0 0 var(--preview-player);
+  height: var(--preview-player);
+  min-height: 0;
+  padding: 0 10px;
+  grid-gap: 10px;
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
+.previewBar .simulation {
+  height: 100%;
+  min-width: 0;
+  flex: 1;
+  padding: 0;
+  grid-gap: 5px;
+  flex-wrap: nowrap;
+  background: transparent;
+}
+
+.previewBar .simulation .square {
+  height: 27px;
+  min-height: 27px;
+  min-width: 26px;
+  width: 26px;
+  padding: 0;
+  font-size: 11px;
+}
+
+.previewBar .seekBar {
+  min-width: 60px;
+  height: 30px;
+  margin: 0 6px;
+}
+
+.previewBar .seekTrack,
+.previewBar .seekFill {
+  top: 13px;
+}
+
+.previewBar .seekThumb {
+  top: 6px;
+}
+
+.previewBar .simulation output {
+  min-width: 36px;
+  font-size: 9px;
+}
+
+.previewBar .simulation select {
+  min-height: 25px;
+  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  font-size: 9px;
+  margin: 0;
+  padding: 3px;
+}
+
+.previewBar .dro {
+  display: flex;
+  flex: 0 0 245px;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 9px;
+  min-height: 0;
+  height: 27px;
+  margin: 0;
+  padding: 0 0 0 10px;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: transparent;
+}
+
+.previewBar .dro > div {
+  display: flex;
+  min-width: 0;
+  grid-gap: 4px;
+  align-items: center;
+}
+
+.previewBar .dro b {
+  font:
+    13px/1.1 Consolas,
+    "Courier New",
+    monospace;
+  letter-spacing: 0;
+  min-width: 60px;
+  text-align: right;
+}
+
+.previewBar .dro span {
+  font-size: 8px;
+}
+
+.previewBar .dro small {
+  display: none;
+}
+
+.detailsToggle {
+  display: inline-flex;
+  align-items: center;
+  grid-gap: 5px;
+  color: #487384;
+  background: #f6fafb;
+  border-color: #c8dce4;
+  white-space: nowrap;
+}
+
+.detailsToggle.has-warnings {
+  color: #8b6326;
+}
+
+.detailsToggle.has-errors {
+  color: #a44152;
+  border-color: #dcb0b8;
+  background: #fff1f3;
+}
+
+.detailsBadge {
+  border-radius: 8px;
+  padding: 0 4px;
+  font-size: 9px;
+  line-height: 14px;
+  background: #e4edf0;
+}
+
+.has-errors .detailsBadge {
+  background: #f6dce1;
+}
+
+.has-warnings .detailsBadge {
+  background: #f5e9cf;
+}
+
+.detailsArrow {
+  font-size: 11px;
+}
+
+.detailsToggle[aria-expanded="true"] .detailsArrow {
+  transform: rotate(180deg);
+}
+
+.compSummary {
+  font-family: Consolas, monospace;
+  color: #195b68;
+  background: #eaf7f8;
+  border-color: #a6cdd4;
+  white-space: nowrap;
+}
+
+.compSummary.zeroD {
+  color: #7d4a13;
+  border-color: #d6ae76;
+  background: #fff3df;
+}
+
+.workDetails {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  bottom: var(--preview-player);
+  max-height: 45vh;
+  overflow: auto;
+  background: #fff;
+  border-top: 1px solid #adc6d0;
+  box-shadow: 0 -5px 15px rgba(34, 66, 86, 0.12);
+  scrollbar-width: thin;
+}
+
+.detailsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 14px;
+  border-bottom: 1px solid var(--line);
+  background: #f0f6f8;
+}
+
+.detailsHeader h2 {
+  font-size: 11px;
+  color: #3b687e;
+}
+
+.detailsHeader button {
+  min-height: 24px;
+}
+
+.workDetails .frameReadout {
+  height: auto;
+  min-height: 23px;
+  padding: 7px 14px;
+  font-size: 10px;
+}
+
+.workDetails .stats {
+  padding: 9px 14px;
+  grid-gap: 10px;
+}
+
+.workDetails .stats small {
+  font-size: 8px;
+}
+
+.workDetails .stats strong {
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.workDetails .messages {
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  padding: 8px 14px;
+}
+
+.workDetails .compReadout {
+  margin: 8px 14px 0;
+  font-size: 11px;
+  padding: 8px 10px;
+}
+
+.drawing .previewBar {
+  display: none;
+}
+
+.drawing .workDetails {
+  bottom: 0;
+}
+
+.drawing .workDetails .frameReadout,
+.drawing .workDetails .stats {
+  display: none;
+}
+
+@media (min-width: 621px) {
+  body {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 621px) and (max-width: 1100px) {
+  .previewBar .dro {
+    position: absolute;
+    right: 12px;
+    bottom: 50px;
+    background: #f0f6f8;
+    border: 1px solid #d1e1e8;
+    border-radius: 4px;
+    padding: 5px 8px;
+    height: 30px;
+    z-index: 2;
+  }
+  .coordinates {
+    bottom: 53px;
+  }
+  .viewLegend {
+    font-size: 7px;
+    grid-gap: 7px;
+  }
+}
+
+@media (min-width: 901px) {
+  .show-code .previewBar .dro {
+    position: absolute;
+    right: 12px;
+    bottom: 50px;
+    background: #f0f6f8;
+    border: 1px solid #d1e1e8;
+    border-radius: 4px;
+    padding: 5px 8px;
+    height: 30px;
+    z-index: 2;
+  }
+}
+
+@media (min-width: 621px) and (max-width: 900px) {
+  .show-code .layout {
+    grid-template-columns: 260px minmax(300px, 1fr);
+  }
+  .show-code .codePane {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 340px;
+    max-width: calc(100% - 260px);
+    z-index: 6;
+  }
+  .viewHeader > div:first-child {
+    max-width: 35%;
+  }
+  .viewHeader p {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  body {
+    overflow: auto;
+  }
+  .topbar {
+    padding: 0 8px;
+    grid-gap: 8px;
+  }
+  .brand strong {
+    font-size: 12px;
+  }
+  .brand small {
+    font-size: 6px;
+  }
+  .mark {
+    width: 27px;
+    height: 27px;
+    font-size: 18px;
+  }
+  .workflow {
+    padding: 0 5px;
+    grid-gap: 4px;
+  }
+  .workflow button {
+    font-size: 9px;
+  }
+  .layout,
+  .show-code .layout {
+    height: auto;
+    min-height: 0;
+  }
+  .workspace,
+  .show-code .workspace {
+    order: 0;
+    height: calc(100vh - var(--app-topbar) - var(--app-workflow));
+    min-height: 300px;
+    flex: none;
+  }
+  .settings,
+  .show-code .settings {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    order: 1;
+  }
+  .show-code .codePane {
+    height: 400px;
+    min-height: 400px;
+    position: static;
+    order: 2;
+  }
+  .codePane textarea {
+    min-height: 250px;
+  }
+  .viewHeader {
+    padding: 5px 9px;
+  }
+  .viewHeader > div:first-child {
+    max-width: 38%;
+  }
+  .viewHeader h1 {
+    font-size: 11px;
+  }
+  .viewHeader p {
+    display: none;
+  }
+  .viewButtons {
+    grid-gap: 3px;
+  }
+  .viewButtons button {
+    font-size: 9px;
+    padding: 3px 5px;
+    min-height: 25px;
+  }
+  .compSummary {
+    position: absolute;
+    right: 10px;
+    top: 68px;
+  }
+  .previewBar {
+    padding: 0 8px;
+    grid-gap: 5px;
+  }
+  .previewBar .dro {
+    position: absolute;
+    right: 10px;
+    bottom: 48px;
+    height: 27px;
+    background: #f0f6f8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    border: 1px solid #d1e1e8;
+    z-index: 2;
+  }
+  .previewBar .dro b {
+    font-size: 11px;
+    min-width: 52px;
+  }
+  .previewBar .simulation {
+    grid-gap: 4px;
+  }
+  .previewBar .simulation .square {
+    width: 24px;
+    min-width: 24px;
+  }
+  .previewBar .simulation select {
+    width: 44px;
+    min-width: 44px;
+    max-width: 44px;
+  }
+  .previewBar .seekBar {
+    min-width: 40px;
+    margin: 0 3px;
+  }
+  .previewBar .simulation output {
+    font-size: 8px;
+    min-width: 31px;
+  }
+  .coordinates {
+    bottom: 50px;
+  }
+  .viewLegend {
+    font-size: 7px;
+    grid-gap: 6px;
+  }
+  .workDetails {
+    max-height: 52vh;
+  }
+  .workDetails .stats {
+    grid-gap: 6px;
+  }
+  .workDetails .stats small {
+    font-size: 7px;
+  }
+}
+
+.viewLegend i.restColour {
+  height: 9px;
+  width: 13px;
+  background: #dc2530;
+  border: 1px solid #b81d27;
+  border-radius: 2px;
+}
+
+.viewLegend i.toolColour {
+  height: 10px;
+  width: 10px;
+  background: #d7e5ff;
+  border: 2px solid #165bdb;
+  border-radius: 50%;
+}

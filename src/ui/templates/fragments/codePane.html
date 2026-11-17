@@ -1,0 +1,29 @@
+<aside class="codePane">
+  <div class="codeHeader">
+    <div>
+      <h2>Управляющая программа</h2>
+      <small id="codeCaption">FANUC 3000C · CRLF · ASCII</small>
+    </div>
+    <div class="codeActions">
+      <button id="editCode" type="button" class="textBtn dxfOnly" disabled title="Редактировать">
+        Редактировать</button
+      ><button id="copyCode" class="textBtn" title="Копировать">Копировать</button>
+    </div>
+  </div>
+  <div class="codeView">
+    <div id="codeFrameHighlight" class="codeFrameHighlight" aria-hidden="true" hidden></div>
+    <textarea
+      id="code"
+      wrap="off"
+      spellcheck="false"
+      autocapitalize="off"
+      autocomplete="off"
+      aria-label="Управляющая программа"
+    ></textarea>
+  </div>
+  <div class="codeFooter">
+    <div id="codeFrameStatus" hidden></div>
+    <div id="codeStatus">Ожидает расчёта</div>
+    <small id="postDescription" hidden="hidden"></small>
+  </div>
+</aside>

@@ -1,0 +1,40 @@
+{
+  "version": "3.88",
+  "generatedAt": "2026-11-17T16:53:19.305Z",
+  "node": "v24.22.3",
+  "platform": "win32",
+  "browser": "msedge",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "format",
+      "passed": true
+    },
+    {
+      "name": "architecture",
+      "passed": true
+    },
+    {
+      "name": "unit",
+      "passed": true,
+      "tests": 101,
+      "failures": 0
+    },
+    {
+      "name": "build",
+      "passed": true
+    },
+    {
+      "name": "browser",
+      "passed": true,
+      "tests": 25,
+      "failures": 0
+    }
+  ],
+  "artifact": {
+    "version": "3.88",
+    "offline": "ATLANTA-Contour-Offline-3.88.html",
+    "sha256": "12463a103d6da9ffb1292be47d0310ee98aad413e4f0ba1fd0004003bf30925b"
+  },
+  "tests": 126
+}

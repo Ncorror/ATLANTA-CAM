@@ -1,0 +1,3675 @@
+{
+  "source": "ATLANTA Контур · Offline 3.87.html",
+  "sourceSha256": "07097e0e50bc470b6c3534140c60541cc3b170f91dc75fe15b9017c6c141e586",
+  "description": "Frozen from version 3.87 before building the refactored app; do not regenerate from current sources.",
+  "cases": [
+    {
+      "name": "xy / g90 / center",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G00X10000Y56000\r\nN005G00Z1000\r\nN006G01Z-8000\r\nN007G01X10000Y48000\r\nN008G02X0Y38000I-10000\r\nN009G03J-38000\r\nN010G02X-10000Y48000J10000\r\nN011G01X-10000Y56000\r\nN012G00Z30000\r\nN013G00X0Y0\r\nN014M30\r\n%\r\n",
+      "motionsSha256": "279cff4409c3412fbe88cb8dc7b2654318733e3d93642d76a9e0ad8622424308",
+      "motionCount": 10
+    },
+    {
+      "name": "xy / g90 / tool",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 2,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G00X10000Y50583\r\nN005G00Z1000\r\nN006G01Z-2000\r\nN007G01X10000Y45292\r\nN008G02X0Y35292I-10000\r\nN009G03J-35292\r\nN010G02X-10000Y45292J10000\r\nN011G01X-10000Y50583\r\nN012G00Z30000\r\nN013G00X0Y0\r\nN014G00Z30000\r\nN015G00X10000Y53856\r\nN016G00Z1000\r\nN017G01Z-4000\r\nN018G01X10000Y46928\r\nN019G02X0Y36928I-10000\r\nN020G03J-36928\r\nN021G02X-10000Y46928J10000\r\nN022G01X-10000Y53856\r\nN023G00Z30000\r\nN024G00X0Y0\r\nN025G00Z30000\r\nN026G00X10000Y55492\r\nN027G00Z1000\r\nN028G01Z-6000\r\nN029G01X10000Y47746\r\nN030G02X0Y37746I-10000\r\nN031G03J-37746\r\nN032G02X-10000Y47746J10000\r\nN033G01X-10000Y55492\r\nN034G00Z30000\r\nN035G00X0Y0\r\nN036G00Z30000\r\nN037G00X10000Y56000\r\nN038G00Z1000\r\nN039G01Z-8000\r\nN040G01X10000Y48000\r\nN041G02X0Y38000I-10000\r\nN042G03J-38000\r\nN043G02X-10000Y48000J10000\r\nN044G01X-10000Y56000\r\nN045G00Z30000\r\nN046G00X0Y0\r\nN047M30\r\n%\r\n",
+      "motionsSha256": "3709babadd11a6479d8604388322f4ed9eb113ada7d471b556fc6a0318f7de6f",
+      "motionCount": 40
+    },
+    {
+      "name": "xy / g90 / control",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "control",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G00G42X-10000Y-41000I0J10000D01\r\nN005G00Z1000\r\nN006G01Z-8000\r\nN007G01X-10000Y-40000\r\nN008G02X0Y-30000I10000J0\r\nN009G03X0Y-30000I0J30000\r\nN010G02X10000Y-40000I0J-10000\r\nN011G01X10000Y-41000\r\nN012G00Z30000\r\nN013G00G40X10000Y-41000D00\r\nN014G00X0Y0\r\nN015M30\r\n%\r\n",
+      "motionsSha256": "b7bed81cffa01d4d506f0cdcf1bc1b6bc6bf717fc4c6d5be8e5d192308eab33d",
+      "motionCount": 11
+    },
+    {
+      "name": "xy / g90 / wear",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "wear",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G00X10000Y56000\r\nN005G01G42X9990Y56000I-1000J0D01\r\nN006G01X10000Y56000I-1000J0\r\nN007G00Z1000\r\nN008G01Z-8000\r\nN009G01X10000Y48000\r\nN010G02X0Y38000I-10000\r\nN011G03J-38000\r\nN012G02X-10000Y48000J10000\r\nN013G01X-10000Y56000\r\nN014G00Z30000\r\nN015G01G40X-9990Y56000D00\r\nN016G00X-10000Y56000\r\nN017G00X0Y0\r\nN018M30\r\n%\r\n",
+      "motionsSha256": "01abdf4b3c6be921f5a08f8c770f57050c1eb724710dfaf1ffc734997eb62f48",
+      "motionCount": 14
+    },
+    {
+      "name": "xy / g91 / center",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G17\r\nN004G00X10000Y56000\r\nN005G00Z-29000\r\nN006G01Z-9000\r\nN007G01X0Y-8000\r\nN008G02X-10000Y-10000I-10000\r\nN009G03J-38000\r\nN010G02X-10000Y10000J10000\r\nN011G01X0Y8000\r\nN012G00Z38000\r\nN013G00X10000Y-56000\r\nN014G90\r\nN015M30\r\n%\r\n",
+      "motionsSha256": "50b85579f55c04f1c1a0891fd95d531e293f3b0d54afd02ff03a4cf66a1479c7",
+      "motionCount": 10
+    },
+    {
+      "name": "xy / g91 / tool",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 2,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G17\r\nN004G00X10000Y50583\r\nN005G00Z-29000\r\nN006G01Z-3000\r\nN007G01X0Y-5291\r\nN008G02X-10000Y-10000I-10000\r\nN009G03J-35292\r\nN010G02X-10000Y10000J10000\r\nN011G01X0Y5291\r\nN012G00Z32000\r\nN013G00X10000Y-50583\r\nN014G00Z0\r\nN015G00X10000Y53856\r\nN016G00Z-29000\r\nN017G01Z-5000\r\nN018G01X0Y-6928\r\nN019G02X-10000Y-10000I-10000\r\nN020G03J-36928\r\nN021G02X-10000Y10000J10000\r\nN022G01X0Y6928\r\nN023G00Z34000\r\nN024G00X10000Y-53856\r\nN025G00Z0\r\nN026G00X10000Y55492\r\nN027G00Z-29000\r\nN028G01Z-7000\r\nN029G01X0Y-7746\r\nN030G02X-10000Y-10000I-10000\r\nN031G03J-37746\r\nN032G02X-10000Y10000J10000\r\nN033G01X0Y7746\r\nN034G00Z36000\r\nN035G00X10000Y-55492\r\nN036G00Z0\r\nN037G00X10000Y56000\r\nN038G00Z-29000\r\nN039G01Z-9000\r\nN040G01X0Y-8000\r\nN041G02X-10000Y-10000I-10000\r\nN042G03J-38000\r\nN043G02X-10000Y10000J10000\r\nN044G01X0Y8000\r\nN045G00Z38000\r\nN046G00X10000Y-56000\r\nN047G90\r\nN048M30\r\n%\r\n",
+      "motionsSha256": "fc63c8087c99b34d4b7db3907dda146d13d5515d9468739cad4ac3ef58320793",
+      "motionCount": 40
+    },
+    {
+      "name": "xy / g91 / control",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "control",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G17\r\nN004G00G42X-10000Y-41000I0J10000D01\r\nN005G00Z-29000\r\nN006G01Z-9000\r\nN007G01X0Y1000\r\nN008G02X10000Y10000I10000J0\r\nN009G03X0Y0I0J30000\r\nN010G02X10000Y-10000I0J-10000\r\nN011G01X0Y-1000\r\nN012G00Z38000\r\nN013G00G40X0Y0D00\r\nN014G00X-10000Y41000\r\nN015G90\r\nN016M30\r\n%\r\n",
+      "motionsSha256": "cc31c257a0ecfdab746f1a23b571bd9d1ca9a38518129243f4239a02802e8d44",
+      "motionCount": 11
+    },
+    {
+      "name": "xy / g91 / wear",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "wear",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G17\r\nN004G00X10000Y56000\r\nN005G01G42X-10Y0I-1000J0D01\r\nN006G01X10Y0I-1000J0\r\nN007G00Z-29000\r\nN008G01Z-9000\r\nN009G01X0Y-8000\r\nN010G02X-10000Y-10000I-10000\r\nN011G03J-38000\r\nN012G02X-10000Y10000J10000\r\nN013G01X0Y8000\r\nN014G00Z38000\r\nN015G01G40X10Y0D00\r\nN016G00X-10Y0\r\nN017G00X10000Y-56000\r\nN018G90\r\nN019M30\r\n%\r\n",
+      "motionsSha256": "bce9ac57690d3bd34cbd4ad91277f6f4b91a12d62b21220807a1fe7c399bed8f",
+      "motionCount": 14
+    },
+    {
+      "name": "zx / g90 / center",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G18\r\nN004G00Y30000\r\nN005G00X10000Z56000\r\nN006G00Y1000\r\nN007G01Y-8000\r\nN008G01X10000Z48000\r\nN009G03X0Z38000I-10000\r\nN010G02K-38000\r\nN011G03X-10000Z48000K10000\r\nN012G01X-10000Z56000\r\nN013G00Y30000\r\nN014G00X0Z0\r\nN015G90G00Z30000\r\nN016G00X0Y0\r\nN017M30\r\n%\r\n",
+      "motionsSha256": "332fcbe3d7101b173159278981a0f3068f1d9c2b8b48f14bcfa4744db41a0301",
+      "motionCount": 13
+    },
+    {
+      "name": "zx / g90 / tool",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 2,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G18\r\nN004G00Y30000\r\nN005G00X10000Z50583\r\nN006G00Y1000\r\nN007G01Y-2000\r\nN008G01X10000Z45292\r\nN009G03X0Z35292I-10000\r\nN010G02K-35292\r\nN011G03X-10000Z45292K10000\r\nN012G01X-10000Z50583\r\nN013G00Y30000\r\nN014G00X0Z0\r\nN015G00Y30000\r\nN016G00X10000Z53856\r\nN017G00Y1000\r\nN018G01Y-4000\r\nN019G01X10000Z46928\r\nN020G03X0Z36928I-10000\r\nN021G02K-36928\r\nN022G03X-10000Z46928K10000\r\nN023G01X-10000Z53856\r\nN024G00Y30000\r\nN025G00X0Z0\r\nN026G00Y30000\r\nN027G00X10000Z55492\r\nN028G00Y1000\r\nN029G01Y-6000\r\nN030G01X10000Z47746\r\nN031G03X0Z37746I-10000\r\nN032G02K-37746\r\nN033G03X-10000Z47746K10000\r\nN034G01X-10000Z55492\r\nN035G00Y30000\r\nN036G00X0Z0\r\nN037G00Y30000\r\nN038G00X10000Z56000\r\nN039G00Y1000\r\nN040G01Y-8000\r\nN041G01X10000Z48000\r\nN042G03X0Z38000I-10000\r\nN043G02K-38000\r\nN044G03X-10000Z48000K10000\r\nN045G01X-10000Z56000\r\nN046G00Y30000\r\nN047G00X0Z0\r\nN048G90G00Z30000\r\nN049G00X0Y0\r\nN050M30\r\n%\r\n",
+      "motionsSha256": "3baab35608934c7fdd07253d67291b5d23a971ed05509b420206a0d8e0c247b7",
+      "motionCount": 43
+    },
+    {
+      "name": "zx / g90 / control",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "control",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G18\r\nN004G00Y30000\r\nN005G00G41X-10000Z-41000I0K10000D01\r\nN006G00Y1000\r\nN007G01Y-8000\r\nN008G01X-10000Z-40000\r\nN009G03X0Z-30000I10000K0\r\nN010G02X0Z-30000I0K30000\r\nN011G03X10000Z-40000I0K-10000\r\nN012G01X10000Z-41000\r\nN013G00Y30000\r\nN014G00G40X10000Z-41000D00\r\nN015G00X0Z0\r\nN016G90G00Z30000\r\nN017G00X0Y0\r\nN018M30\r\n%\r\n",
+      "motionsSha256": "d3d72b295560bbee205aceb7a9a90eeeb333168bff9e755218961d31a28958ed",
+      "motionCount": 14
+    },
+    {
+      "name": "zx / g90 / wear",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "wear",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G18\r\nN004G00Y30000\r\nN005G00X10000Z56000\r\nN006G01G41X9990Z56000I-1000K0D01\r\nN007G01X10000Z56000I-1000K0\r\nN008G00Y1000\r\nN009G01Y-8000\r\nN010G01X10000Z48000\r\nN011G03X0Z38000I-10000\r\nN012G02K-38000\r\nN013G03X-10000Z48000K10000\r\nN014G01X-10000Z56000\r\nN015G00Y30000\r\nN016G01G40X-9990Z56000D00\r\nN017G00X-10000Z56000\r\nN018G00X0Z0\r\nN019G90G00Z30000\r\nN020G00X0Y0\r\nN021M30\r\n%\r\n",
+      "motionsSha256": "837e600dc6bbcc8125813cadd127852e018f9cec4a1df365e35a67b152ffb3bc",
+      "motionCount": 17
+    },
+    {
+      "name": "zx / g91 / center",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G18\r\nN004G00Y30000\r\nN005G00X10000Z26000\r\nN006G00Y-29000\r\nN007G01Y-9000\r\nN008G01X0Z-8000\r\nN009G03X-10000Z-10000I-10000\r\nN010G02K-38000\r\nN011G03X-10000Z10000K10000\r\nN012G01X0Z8000\r\nN013G00Y38000\r\nN014G00X10000Z-56000\r\nN015G90\r\nN016G90G00Z30000\r\nN017G00X0Y0\r\nN018M30\r\n%\r\n",
+      "motionsSha256": "54437ffffd9caf25cddb46f9c346761dae9ea439bee8849fe310ed0b96cceb60",
+      "motionCount": 13
+    },
+    {
+      "name": "zx / g91 / tool",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 2,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G18\r\nN004G00Y30000\r\nN005G00X10000Z20583\r\nN006G00Y-29000\r\nN007G01Y-3000\r\nN008G01X0Z-5291\r\nN009G03X-10000Z-10000I-10000\r\nN010G02K-35292\r\nN011G03X-10000Z10000K10000\r\nN012G01X0Z5291\r\nN013G00Y32000\r\nN014G00X10000Z-50583\r\nN015G00Y0\r\nN016G00X10000Z53856\r\nN017G00Y-29000\r\nN018G01Y-5000\r\nN019G01X0Z-6928\r\nN020G03X-10000Z-10000I-10000\r\nN021G02K-36928\r\nN022G03X-10000Z10000K10000\r\nN023G01X0Z6928\r\nN024G00Y34000\r\nN025G00X10000Z-53856\r\nN026G00Y0\r\nN027G00X10000Z55492\r\nN028G00Y-29000\r\nN029G01Y-7000\r\nN030G01X0Z-7746\r\nN031G03X-10000Z-10000I-10000\r\nN032G02K-37746\r\nN033G03X-10000Z10000K10000\r\nN034G01X0Z7746\r\nN035G00Y36000\r\nN036G00X10000Z-55492\r\nN037G00Y0\r\nN038G00X10000Z56000\r\nN039G00Y-29000\r\nN040G01Y-9000\r\nN041G01X0Z-8000\r\nN042G03X-10000Z-10000I-10000\r\nN043G02K-38000\r\nN044G03X-10000Z10000K10000\r\nN045G01X0Z8000\r\nN046G00Y38000\r\nN047G00X10000Z-56000\r\nN048G90\r\nN049G90G00Z30000\r\nN050G00X0Y0\r\nN051M30\r\n%\r\n",
+      "motionsSha256": "a8b4945023035c4a2f822f438764b5e5c5a768da3060c8482f201180044b5c2b",
+      "motionCount": 43
+    },
+    {
+      "name": "zx / g91 / control",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "control",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G18\r\nN004G00Y30000\r\nN005G00G41X-10000Z-71000I0K10000D01\r\nN006G00Y-29000\r\nN007G01Y-9000\r\nN008G01X0Z1000\r\nN009G03X10000Z10000I10000K0\r\nN010G02X0Z0I0K30000\r\nN011G03X10000Z-10000I0K-10000\r\nN012G01X0Z-1000\r\nN013G00Y38000\r\nN014G00G40X0Z0D00\r\nN015G00X-10000Z41000\r\nN016G90\r\nN017G90G00Z30000\r\nN018G00X0Y0\r\nN019M30\r\n%\r\n",
+      "motionsSha256": "7a79d3c405519d0de94a0939793fad67f49c3d60ca44b081cfaea2a2c7724160",
+      "motionCount": 14
+    },
+    {
+      "name": "zx / g91 / wear",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "wear",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G18\r\nN004G00Y30000\r\nN005G00X10000Z26000\r\nN006G01G41X-10Z0I-1000K0D01\r\nN007G01X10Z0I-1000K0\r\nN008G00Y-29000\r\nN009G01Y-9000\r\nN010G01X0Z-8000\r\nN011G03X-10000Z-10000I-10000\r\nN012G02K-38000\r\nN013G03X-10000Z10000K10000\r\nN014G01X0Z8000\r\nN015G00Y38000\r\nN016G01G40X10Z0D00\r\nN017G00X-10Z0\r\nN018G00X10000Z-56000\r\nN019G90\r\nN020G90G00Z30000\r\nN021G00X0Y0\r\nN022M30\r\n%\r\n",
+      "motionsSha256": "7138d71bf4a59be3e856f1a828ed8bdd70c588fb660fc02c8360d703a75f95c0",
+      "motionCount": 17
+    },
+    {
+      "name": "yz / g90 / center",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G19\r\nN004G00X30000\r\nN005G00Y10000Z56000\r\nN006G00X1000\r\nN007G01X-8000\r\nN008G01Y10000Z48000\r\nN009G02Y0Z38000J-10000\r\nN010G03K-38000\r\nN011G02Y-10000Z48000K10000\r\nN012G01Y-10000Z56000\r\nN013G00X30000\r\nN014G00Y0Z0\r\nN015G90G00Z30000\r\nN016G00X0Y0\r\nN017M30\r\n%\r\n",
+      "motionsSha256": "8c4ce0016c274effc69f61b4492f28cb742a783919069bcbad818c9b628db976",
+      "motionCount": 13
+    },
+    {
+      "name": "yz / g90 / tool",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 2,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G19\r\nN004G00X30000\r\nN005G00Y10000Z50583\r\nN006G00X1000\r\nN007G01X-2000\r\nN008G01Y10000Z45292\r\nN009G02Y0Z35292J-10000\r\nN010G03K-35292\r\nN011G02Y-10000Z45292K10000\r\nN012G01Y-10000Z50583\r\nN013G00X30000\r\nN014G00Y0Z0\r\nN015G00X30000\r\nN016G00Y10000Z53856\r\nN017G00X1000\r\nN018G01X-4000\r\nN019G01Y10000Z46928\r\nN020G02Y0Z36928J-10000\r\nN021G03K-36928\r\nN022G02Y-10000Z46928K10000\r\nN023G01Y-10000Z53856\r\nN024G00X30000\r\nN025G00Y0Z0\r\nN026G00X30000\r\nN027G00Y10000Z55492\r\nN028G00X1000\r\nN029G01X-6000\r\nN030G01Y10000Z47746\r\nN031G02Y0Z37746J-10000\r\nN032G03K-37746\r\nN033G02Y-10000Z47746K10000\r\nN034G01Y-10000Z55492\r\nN035G00X30000\r\nN036G00Y0Z0\r\nN037G00X30000\r\nN038G00Y10000Z56000\r\nN039G00X1000\r\nN040G01X-8000\r\nN041G01Y10000Z48000\r\nN042G02Y0Z38000J-10000\r\nN043G03K-38000\r\nN044G02Y-10000Z48000K10000\r\nN045G01Y-10000Z56000\r\nN046G00X30000\r\nN047G00Y0Z0\r\nN048G90G00Z30000\r\nN049G00X0Y0\r\nN050M30\r\n%\r\n",
+      "motionsSha256": "6476cc62bf2488d22bf6f5a02f9b1909b5ad634a892afba221a89567fdbc5391",
+      "motionCount": 43
+    },
+    {
+      "name": "yz / g90 / control",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "control",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G19\r\nN004G00X30000\r\nN005G00G42Y-10000Z-41000J0K10000D01\r\nN006G00X1000\r\nN007G01X-8000\r\nN008G01Y-10000Z-40000\r\nN009G02Y0Z-30000J10000K0\r\nN010G03Y0Z-30000J0K30000\r\nN011G02Y10000Z-40000J0K-10000\r\nN012G01Y10000Z-41000\r\nN013G00X30000\r\nN014G00G40Y10000Z-41000D00\r\nN015G00Y0Z0\r\nN016G90G00Z30000\r\nN017G00X0Y0\r\nN018M30\r\n%\r\n",
+      "motionsSha256": "580a1e5bbe06a9ab3b965e4bdbcc93fb5a421feb3a4ba6ae18bcbb92172d778e",
+      "motionCount": 14
+    },
+    {
+      "name": "yz / g90 / wear",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "wear",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g90",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G19\r\nN004G00X30000\r\nN005G00Y10000Z56000\r\nN006G01G42Y9990Z56000J-1000K0D01\r\nN007G01Y10000Z56000J-1000K0\r\nN008G00X1000\r\nN009G01X-8000\r\nN010G01Y10000Z48000\r\nN011G02Y0Z38000J-10000\r\nN012G03K-38000\r\nN013G02Y-10000Z48000K10000\r\nN014G01Y-10000Z56000\r\nN015G00X30000\r\nN016G01G40Y-9990Z56000D00\r\nN017G00Y-10000Z56000\r\nN018G00Y0Z0\r\nN019G90G00Z30000\r\nN020G00X0Y0\r\nN021M30\r\n%\r\n",
+      "motionsSha256": "6ce1617742415dbf863d91751769bb532b94e86c25b313f820a85ac318c46290",
+      "motionCount": 17
+    },
+    {
+      "name": "yz / g91 / center",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G19\r\nN004G00X30000\r\nN005G00Y10000Z26000\r\nN006G00X-29000\r\nN007G01X-9000\r\nN008G01Y0Z-8000\r\nN009G02Y-10000Z-10000J-10000\r\nN010G03K-38000\r\nN011G02Y-10000Z10000K10000\r\nN012G01Y0Z8000\r\nN013G00X38000\r\nN014G00Y10000Z-56000\r\nN015G90\r\nN016G90G00Z30000\r\nN017G00X0Y0\r\nN018M30\r\n%\r\n",
+      "motionsSha256": "3e220fdcfbbb75e6603fdfbbda91fed3eb964fc4d5c4617b8a9ea50aacff93ea",
+      "motionCount": 13
+    },
+    {
+      "name": "yz / g91 / tool",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 2,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G19\r\nN004G00X30000\r\nN005G00Y10000Z20583\r\nN006G00X-29000\r\nN007G01X-3000\r\nN008G01Y0Z-5291\r\nN009G02Y-10000Z-10000J-10000\r\nN010G03K-35292\r\nN011G02Y-10000Z10000K10000\r\nN012G01Y0Z5291\r\nN013G00X32000\r\nN014G00Y10000Z-50583\r\nN015G00X0\r\nN016G00Y10000Z53856\r\nN017G00X-29000\r\nN018G01X-5000\r\nN019G01Y0Z-6928\r\nN020G02Y-10000Z-10000J-10000\r\nN021G03K-36928\r\nN022G02Y-10000Z10000K10000\r\nN023G01Y0Z6928\r\nN024G00X34000\r\nN025G00Y10000Z-53856\r\nN026G00X0\r\nN027G00Y10000Z55492\r\nN028G00X-29000\r\nN029G01X-7000\r\nN030G01Y0Z-7746\r\nN031G02Y-10000Z-10000J-10000\r\nN032G03K-37746\r\nN033G02Y-10000Z10000K10000\r\nN034G01Y0Z7746\r\nN035G00X36000\r\nN036G00Y10000Z-55492\r\nN037G00X0\r\nN038G00Y10000Z56000\r\nN039G00X-29000\r\nN040G01X-9000\r\nN041G01Y0Z-8000\r\nN042G02Y-10000Z-10000J-10000\r\nN043G03K-38000\r\nN044G02Y-10000Z10000K10000\r\nN045G01Y0Z8000\r\nN046G00X38000\r\nN047G00Y10000Z-56000\r\nN048G90\r\nN049G90G00Z30000\r\nN050G00X0Y0\r\nN051M30\r\n%\r\n",
+      "motionsSha256": "3e0a973aa702c4ebe72affed30a420872fbcb16be35f2cb7ccc811d0bde6cb0a",
+      "motionCount": 43
+    },
+    {
+      "name": "yz / g91 / control",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "control",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G19\r\nN004G00X30000\r\nN005G00G42Y-10000Z-71000J0K10000D01\r\nN006G00X-29000\r\nN007G01X-9000\r\nN008G01Y0Z1000\r\nN009G02Y10000Z10000J10000K0\r\nN010G03Y0Z0J0K30000\r\nN011G02Y10000Z-10000J0K-10000\r\nN012G01Y0Z-1000\r\nN013G00X38000\r\nN014G00G40Y0Z0D00\r\nN015G00Y-10000Z41000\r\nN016G90\r\nN017G90G00Z30000\r\nN018G00X0Y0\r\nN019M30\r\n%\r\n",
+      "motionsSha256": "011b470dace9aaded2e09709e144ee53aa19654211d9abc8ca73acfb2ad7030a",
+      "motionCount": 14
+    },
+    {
+      "name": "yz / g91 / wear",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "wear",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "coordinateMode": "g91",
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16,
+        "corrector": 1,
+        "correctionValue": 8000
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G91G19\r\nN004G00X30000\r\nN005G00Y10000Z26000\r\nN006G01G42Y-10Z0J-1000K0D01\r\nN007G01Y10Z0J-1000K0\r\nN008G00X-29000\r\nN009G01X-9000\r\nN010G01Y0Z-8000\r\nN011G02Y-10000Z-10000J-10000\r\nN012G03K-38000\r\nN013G02Y-10000Z10000K10000\r\nN014G01Y0Z8000\r\nN015G00X38000\r\nN016G01G40Y10Z0D00\r\nN017G00Y-10Z0\r\nN018G00Y10000Z-56000\r\nN019G90\r\nN020G90G00Z30000\r\nN021G00X0Y0\r\nN022M30\r\n%\r\n",
+      "motionsSha256": "c4bde3ebc1528a24b8b481432c278f59ac691904754b68ab1588a76a89bae701",
+      "motionCount": 17
+    },
+    {
+      "name": "G25 / xy / circle",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 3,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "repeatMode": "g25"
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G90G00Z30000\r\nN005G00X10000Y56000\r\nN006G00Z1000\r\nN007G01Z-8000\r\nN008G91\r\nN009G01X0Y-8000\r\nN010G02X-10000Y-10000I-10000J0\r\nN011G91\r\nN012G03X0Y0I0J-38000\r\nN013G01Z-200\r\nN014G02X0Y0I0J-38000\r\nN015G01Z-200\r\nN016G25P12Q15R3\r\nN017G90G00Z30000\r\nN018G00X0Y0\r\nN019G00Z30000\r\nN020M30\r\n%\r\n",
+      "motionsSha256": "10e0673a289cb28019d7f28cc271de7d37c067e3f2edf7db985ed774e5436e17",
+      "motionCount": 23
+    },
+    {
+      "name": "G25 / xy / open",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 3,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "repeatMode": "g25"
+      },
+      "contours": [
+        {
+          "id": "open",
+          "enabled": true,
+          "closed": false,
+          "segs": [
+            {
+              "type": "L",
+              "a": {
+                "x": 0,
+                "y": 0
+              },
+              "b": {
+                "x": 20,
+                "y": 0
+              }
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": 20,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 10
+              },
+              "c": {
+                "x": 20,
+                "y": 10
+              },
+              "sw": 1.5707963267948966
+            }
+          ],
+          "side": "on"
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G90G00Z30000\r\nN005G00X0Y0\r\nN006G00Z1000\r\nN007G01Z-8000\r\nN008G01X0Y0\r\nN009G91\r\nN010G01X20000Y0\r\nN011G03X10000Y10000I0J10000\r\nN012G01Z-200\r\nN013G02X-10000Y-10000I-10000J0\r\nN014G01X-20000Y0\r\nN015G01Z-200\r\nN016G25P10Q15R3\r\nN017G90G00Z30000\r\nN018G00X0Y0\r\nN019G00Z30000\r\nN020M30\r\n%\r\n",
+      "motionsSha256": "0c3e4307505c37f8f771fd2a7688edfd3a058e90363dba99f2e3d12886f1c3ca",
+      "motionCount": 27
+    },
+    {
+      "name": "G25 / zx / circle",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 3,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "repeatMode": "g25"
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G18\r\nN004G90G00Y30000\r\nN005G00X10000Z56000\r\nN006G00Y1000\r\nN007G01Y-8000\r\nN008G91\r\nN009G01X0Z-8000\r\nN010G03X-10000Z-10000I-10000K0\r\nN011G91\r\nN012G02X0Z0I0K-38000\r\nN013G01Y-200\r\nN014G03X0Z0I0K-38000\r\nN015G01Y-200\r\nN016G25P12Q15R3\r\nN017G90G00Y30000\r\nN018G00X0Z0\r\nN019G90G00Z30000\r\nN020G00X0Y0\r\nN021M30\r\n%\r\n",
+      "motionsSha256": "f918239111d9a39f97e9aed9d8e583645ca8d808f9aebcaa587783a92f3a8117",
+      "motionCount": 26
+    },
+    {
+      "name": "G25 / zx / open",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "zx",
+        "workPlaneExplicit": true,
+        "g25R": 3,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "repeatMode": "g25"
+      },
+      "contours": [
+        {
+          "id": "open",
+          "enabled": true,
+          "closed": false,
+          "segs": [
+            {
+              "type": "L",
+              "a": {
+                "x": 0,
+                "y": 0
+              },
+              "b": {
+                "x": 20,
+                "y": 0
+              }
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": 20,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 10
+              },
+              "c": {
+                "x": 20,
+                "y": 10
+              },
+              "sw": 1.5707963267948966
+            }
+          ],
+          "side": "on"
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G18\r\nN004G90G00Y30000\r\nN005G00X0Z0\r\nN006G00Y1000\r\nN007G01Y-8000\r\nN008G01X0Z0\r\nN009G91\r\nN010G01X20000Z0\r\nN011G02X10000Z10000I0K10000\r\nN012G01Y-200\r\nN013G03X-10000Z-10000I-10000K0\r\nN014G01X-20000Z0\r\nN015G01Y-200\r\nN016G25P10Q15R3\r\nN017G90G00Y30000\r\nN018G00X0Z0\r\nN019G90G00Z30000\r\nN020G00X0Y0\r\nN021M30\r\n%\r\n",
+      "motionsSha256": "1efeafda27005de747c3de32bc7389f6328f7e65ec9e711d91b45741f1c55292",
+      "motionCount": 31
+    },
+    {
+      "name": "G25 / yz / circle",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 3,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "repeatMode": "g25"
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G19\r\nN004G90G00X30000\r\nN005G00Y10000Z56000\r\nN006G00X1000\r\nN007G01X-8000\r\nN008G91\r\nN009G01Y0Z-8000\r\nN010G02Y-10000Z-10000J-10000K0\r\nN011G91\r\nN012G03Y0Z0J0K-38000\r\nN013G01X-200\r\nN014G02Y0Z0J0K-38000\r\nN015G01X-200\r\nN016G25P12Q15R3\r\nN017G90G00X30000\r\nN018G00Y0Z0\r\nN019G90G00Z30000\r\nN020G00X0Y0\r\nN021M30\r\n%\r\n",
+      "motionsSha256": "268910b8f82f34558aa989869d7f66034c1bf99d5d3fe3c69e054fb733e65be9",
+      "motionCount": 26
+    },
+    {
+      "name": "G25 / yz / open",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 8,
+        "stepDown": 8,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "center",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "yz",
+        "workPlaneExplicit": true,
+        "g25R": 3,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "repeatMode": "g25"
+      },
+      "contours": [
+        {
+          "id": "open",
+          "enabled": true,
+          "closed": false,
+          "segs": [
+            {
+              "type": "L",
+              "a": {
+                "x": 0,
+                "y": 0
+              },
+              "b": {
+                "x": 20,
+                "y": 0
+              }
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": 20,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 10
+              },
+              "c": {
+                "x": 20,
+                "y": 10
+              },
+              "sw": 1.5707963267948966
+            }
+          ],
+          "side": "on"
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G19\r\nN004G90G00X30000\r\nN005G00Y0Z0\r\nN006G00X1000\r\nN007G01X-8000\r\nN008G01Y0Z0\r\nN009G91\r\nN010G01Y20000Z0\r\nN011G03Y10000Z10000J0K10000\r\nN012G01X-200\r\nN013G02Y-10000Z-10000J-10000K0\r\nN014G01Y-20000Z0\r\nN015G01X-200\r\nN016G25P10Q15R3\r\nN017G90G00X30000\r\nN018G00Y0Z0\r\nN019G90G00Z30000\r\nN020G00X0Y0\r\nN021M30\r\n%\r\n",
+      "motionsSha256": "990fbbc8e3c04e8430976984300a6a70f1c27e3d5ab930a1baba8e3204a0f549",
+      "motionCount": 31
+    },
+    {
+      "name": "ball / inside / climb",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 2,
+        "stepDown": 1,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "inside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G00X10000Y-12254\r\nN005G00Z1000\r\nN006G01Z-1000\r\nN007G01X10000Y-16127\r\nN008G02X0Y-26127I-10000\r\nN009J26127\r\nN010X-10000Y-16127J10000\r\nN011G01X-10000Y-12254\r\nN012G00Z30000\r\nN013G00X0Y0\r\nN014G00Z30000\r\nN015G00X10000Y-9417\r\nN016G00Z1000\r\nN017G01Z-2000\r\nN018G01X10000Y-14708\r\nN019G02X0Y-24708I-10000\r\nN020J24708\r\nN021X-10000Y-14708J10000\r\nN022G01X-10000Y-9417\r\nN023G00Z30000\r\nN024G00X0Y0\r\nN025M30\r\n%\r\n",
+      "motionsSha256": "60c41cf3ecb8d4eddb9157217859fbdeab39157ddba113b860329d295d0c2c3a",
+      "motionCount": 20
+    },
+    {
+      "name": "ball / inside / conventional",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 2,
+        "stepDown": 1,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "conventional",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "inside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G00X10000Y12254\r\nN005G00Z1000\r\nN006G01Z-1000\r\nN007G01X10000Y16127\r\nN008G03X0Y26127I-10000\r\nN009J-26127\r\nN010X-10000Y16127J-10000\r\nN011G01X-10000Y12254\r\nN012G00Z30000\r\nN013G00X0Y0\r\nN014G00Z30000\r\nN015G00X10000Y9417\r\nN016G00Z1000\r\nN017G01Z-2000\r\nN018G01X10000Y14708\r\nN019G03X0Y24708I-10000\r\nN020J-24708\r\nN021X-10000Y14708J-10000\r\nN022G01X-10000Y9417\r\nN023G00Z30000\r\nN024G00X0Y0\r\nN025M30\r\n%\r\n",
+      "motionsSha256": "6a2a9a37d3b0ab74463a5e768f23de31015b823918577577d195cb1087fa3acd",
+      "motionCount": 20
+    },
+    {
+      "name": "ball / outside / climb",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 2,
+        "stepDown": 1,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "climb",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G00X10000Y47746\r\nN005G00Z1000\r\nN006G01Z-1000\r\nN007G01X10000Y43873\r\nN008G02X0Y33873I-10000\r\nN009G03J-33873\r\nN010G02X-10000Y43873J10000\r\nN011G01X-10000Y47746\r\nN012G00Z30000\r\nN013G00X0Y0\r\nN014G00Z30000\r\nN015G00X10000Y50583\r\nN016G00Z1000\r\nN017G01Z-2000\r\nN018G01X10000Y45292\r\nN019G02X0Y35292I-10000\r\nN020G03J-35292\r\nN021G02X-10000Y45292J10000\r\nN022G01X-10000Y50583\r\nN023G00Z30000\r\nN024G00X0Y0\r\nN025M30\r\n%\r\n",
+      "motionsSha256": "a0f2c5cbfa6d9760d3abb0ad2c787b8dcc93e16ae8a1c39196f924dd9558483f",
+      "motionCount": 20
+    },
+    {
+      "name": "ball / outside / conventional",
+      "config": {
+        "id": "fanuc3000c",
+        "name": "FANUC 3000C",
+        "coordScale": 1000,
+        "feedScale": 10,
+        "decimal": false,
+        "spindleDigits": 4,
+        "toolDigits": 2,
+        "machine": "fanuc3000c",
+        "toolKind": "mill",
+        "diameter": 16,
+        "depth": 2,
+        "stepDown": 1,
+        "feed": 10,
+        "plunge": 10,
+        "safeZ": 30,
+        "topZ": 0,
+        "initialZ": 30,
+        "initialX": 0,
+        "initialY": 0,
+        "approach": 1,
+        "endZ": 30,
+        "lead": 1,
+        "allowance": 0,
+        "stockAllowance": 0,
+        "stepOver": 1,
+        "originX": 0,
+        "originY": 0,
+        "tolerance": 0.02,
+        "rpm": 1000,
+        "flutes": 2,
+        "allowPlunge": true,
+        "autoLead": true,
+        "autoFit": true,
+        "stockShape": "none",
+        "direction": "conventional",
+        "compMode": "tool",
+        "returnXY": true,
+        "useG92": true,
+        "lineNumbers": true,
+        "endCode": "M30",
+        "feedInHeader": true,
+        "headerFeed": 100,
+        "entryMode": "auto",
+        "workPlane": "xy",
+        "workPlaneExplicit": true,
+        "g25R": 2,
+        "g25Shift": -0.2,
+        "g25Reverse": true,
+        "toolShape": "ball_mill",
+        "toolWorkingLength": 16
+      },
+      "contours": [
+        {
+          "id": "c1",
+          "segs": [
+            {
+              "type": "A",
+              "a": {
+                "x": 30,
+                "y": 0
+              },
+              "b": {
+                "x": -30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            },
+            {
+              "type": "A",
+              "a": {
+                "x": -30,
+                "y": 0
+              },
+              "b": {
+                "x": 30,
+                "y": 0
+              },
+              "c": {
+                "x": 0,
+                "y": 0
+              },
+              "sw": 3.141592653589793,
+              "layer": "SKETCH"
+            }
+          ],
+          "closed": true,
+          "layer": "SKETCH",
+          "enabled": true,
+          "side": "outside",
+          "ambiguous": false,
+          "nesting": 0,
+          "autoSide": "outside",
+          "preserveJunctions": false
+        }
+      ],
+      "code": "%\r\n(               TEST MILL)\r\nN001G40G80\r\nN002G92X0Y0Z30000\r\nN003F100G90G17\r\nN004G00X10000Y-47746\r\nN005G00Z1000\r\nN006G01Z-1000\r\nN007G01X10000Y-43873\r\nN008G03X0Y-33873I-10000\r\nN009G02J33873\r\nN010G03X-10000Y-43873J-10000\r\nN011G01X-10000Y-47746\r\nN012G00Z30000\r\nN013G00X0Y0\r\nN014G00Z30000\r\nN015G00X10000Y-50583\r\nN016G00Z1000\r\nN017G01Z-2000\r\nN018G01X10000Y-45292\r\nN019G03X0Y-35292I-10000\r\nN020G02J35292\r\nN021G03X-10000Y-45292J-10000\r\nN022G01X-10000Y-50583\r\nN023G00Z30000\r\nN024G00X0Y0\r\nN025M30\r\n%\r\n",
+      "motionsSha256": "55a22fae25958d4d3e4d7481ef37c3f02d8444e0e39634007a02a2076cca0286",
+      "motionCount": 20
+    }
+  ]
+}

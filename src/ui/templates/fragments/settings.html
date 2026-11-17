@@ -1,0 +1,1686 @@
+<aside class="settings" id="settings" aria-label="Инструменты и параметры">
+  <nav class="dxfOnly settingsNav" aria-label="Рабочие панели" role="tablist">
+    <button
+      id="drawSketch"
+      class="panelTab"
+      data-work-pane="drawing"
+      role="tab"
+      aria-controls="drawingPane"
+      title="Чертёж"
+    >
+      Чертёж</button
+    ><button
+      class="panelTab"
+      id="dxfMode"
+      data-work-pane="operations"
+      role="tab"
+      aria-controls="operationsPane"
+      title="Обработка"
+    >
+      Обработка</button
+    ><button
+      id="machineTab"
+      type="button"
+      class="panelTab"
+      role="tab"
+      data-work-pane="machine"
+      aria-controls="machinePane"
+      title="Станок"
+    >
+      Станок
+    </button>
+  </nav>
+  <div class="settingsBody" id="settingsBody">
+    <div class="dxfOnly">
+      <div id="drawingPane" class="workPane" data-pane="drawing" role="tabpanel">
+        <section id="sketchPanel" class="sketchPanel" hidden>
+          <div class="sectionTitle">
+            <h2>Построение</h2>
+            <small id="sketchCount">0 элементов</small>
+          </div>
+          <div class="sketchActions">
+            <button
+              id="sketchUndo"
+              type="button"
+              disabled
+              data-icon="undo"
+              class="iconButton"
+              title="Отменить: Ctrl+Z"
+              aria-label="Отменить: Ctrl+Z"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m8 5-5 5 5 5M3 10h10a7 7 0 0 1 7 9"></path></svg
+              ><span class="toolLabel">Отмена</span></button
+            ><button
+              id="sketchRedo"
+              type="button"
+              disabled
+              data-icon="redo"
+              class="iconButton"
+              title="Повторить: Ctrl+Y / Ctrl+Shift+Z"
+              aria-label="Повторить: Ctrl+Y / Ctrl+Shift+Z"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m16 5 5 5-5 5m5-5H11a7 7 0 0 0-7 9"></path></svg
+              ><span class="toolLabel">Повтор</span></button
+            ><button
+              id="sketchDelete"
+              type="button"
+              disabled
+              data-icon="delete"
+              class="iconButton"
+              title="Удалить выбранный элемент"
+              aria-label="Удалить выбранный элемент"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 6h16M8 6V3h8v3M6 6l1 16h10l1-16M10 10v8m4-8v8"></path></svg
+              ><span class="toolLabel">Удалить</span>
+            </button>
+          </div>
+          <p id="sketchIssue" class="sketchIssue" role="status" hidden></p>
+          <div class="sketchTools" role="group" aria-label="Инструменты рисования и обработки">
+            <button
+              type="button"
+              data-sketch-tool="select"
+              data-icon="select"
+              class="iconButton tool-select"
+              title="Выбор (Пробел) · рамка, Ctrl и перенос группы"
+              aria-keyshortcuts="Space"
+              aria-label="Выбор: рамка, Ctrl и перенос группы"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 3v16l4.5-4 3 6 3-1.5-3-5.5 6-.5Z"></path></svg
+              ><span class="toolLabel">Выбор</span></button
+            ><button
+              type="button"
+              data-sketch-tool="auxLine"
+              data-icon="auxLine"
+              class="iconButton tool-auxLine"
+              title="Вспомогательная прямая: выбери базовую прямую и отступ"
+              aria-label="Вспомогательная прямая: выбери базовую прямую и отступ"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 2v20M17 2v20" stroke-dasharray="6 3 1 3"></path>
+                <path d="M8 12h8m-6-2-2 2 2 2m4-4 2 2-2 2"></path></svg
+              ><span class="toolLabel">Направл.</span></button
+            ><button
+              type="button"
+              data-sketch-tool="line"
+              data-icon="line"
+              class="iconButton tool-line"
+              title="Линия плана: начало, направление, длина, Enter"
+              aria-label="Линия плана: начало, направление, длина, Enter"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 20 20 4"></path>
+                <rect x="2" y="18" width="4" height="4" fill="currentColor" stroke="none"></rect>
+                <rect
+                  x="18"
+                  y="2"
+                  width="4"
+                  height="4"
+                  fill="currentColor"
+                  stroke="none"
+                ></rect></svg
+              ><span class="toolLabel">Линия</span></button
+            ><button
+              type="button"
+              data-sketch-tool="arc"
+              data-icon="arc"
+              class="iconButton tool-arc"
+              title="Дуга через три точки"
+              aria-label="Дуга через три точки"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 18Q12-9 21 18"></path>
+                <circle cx="3" cy="18" r="2" fill="currentColor"></circle>
+                <circle cx="12" cy="4.5" r="2" fill="currentColor"></circle>
+                <circle cx="21" cy="18" r="2" fill="currentColor"></circle></svg
+              ><span class="toolLabel">Дуга</span></button
+            ><button
+              type="button"
+              data-sketch-tool="circle"
+              data-icon="circle"
+              class="iconButton tool-circle"
+              title="Окружность по центру и размеру"
+              aria-label="Окружность по центру и размеру"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="8"></circle>
+                <path d="M9 12h6m-3-3v6" stroke-width="1"></path></svg
+              ><span class="toolLabel">Окружность</span></button
+            ><button
+              type="button"
+              data-sketch-tool="rect"
+              data-icon="rect"
+              class="iconButton tool-rect"
+              title="Прямоугольник: ширина, Tab, высота"
+              aria-label="Прямоугольник: ширина, Tab, высота"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="5" width="18" height="14"></rect>
+                <rect x="1" y="3" width="4" height="4" fill="currentColor" stroke="none"></rect>
+                <rect
+                  x="19"
+                  y="17"
+                  width="4"
+                  height="4"
+                  fill="currentColor"
+                  stroke="none"
+                ></rect></svg
+              ><span class="toolLabel">Прямоуг.</span></button
+            ><button
+              type="button"
+              data-sketch-tool="fillet"
+              data-icon="fillet"
+              class="iconButton tool-fillet"
+              title="Скругление R: выбрать две прямые"
+              aria-label="Скругление R: выбрать две прямые"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 21V11a7 7 0 0 1 7-7h10"></path>
+                <path d="M4 4h8M4 4v8" stroke-dasharray="2 2" stroke-width="1"></path>
+                <text
+                  x="13"
+                  y="19"
+                  fill="currentColor"
+                  stroke="none"
+                  font-family="Arial"
+                  font-size="10"
+                >
+                  R
+                </text></svg
+              ><span class="toolLabel">Радиус</span></button
+            ><button
+              type="button"
+              data-sketch-tool="chamfer"
+              data-icon="chamfer"
+              class="iconButton tool-chamfer"
+              title="Фаска C: выбрать две прямые"
+              aria-label="Фаска C: выбрать две прямые"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 21V11l7-7h10"></path>
+                <path d="M4 4h8M4 4v8" stroke-dasharray="2 2" stroke-width="1"></path>
+                <text
+                  x="13"
+                  y="19"
+                  fill="currentColor"
+                  stroke="none"
+                  font-family="Arial"
+                  font-size="10"
+                >
+                  C
+                </text></svg
+              ><span class="toolLabel">Фаска</span></button
+            ><button
+              type="button"
+              data-sketch-tool="ruler"
+              data-icon="ruler"
+              class="iconButton tool-ruler"
+              title="Линейка: измерить и вынести размер на чертёж; двойной клик — изменить размер"
+              aria-label="Линейка: измерить и вынести размер на чертёж; двойной клик — изменить размер"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="6" width="20" height="12" rx="1.5"></rect>
+                <path d="M6 6v7M10 6v4M14 6v7M18 6v4"></path></svg
+              ><span class="rulerLabel">Линейка</span></button
+            ><button
+              type="button"
+              data-sketch-tool="erase"
+              data-icon="erase"
+              class="iconButton tool-erase"
+              title="Стереть элемент по щелчку"
+              aria-label="Стереть элемент по щелчку"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m4 14 8-10a2 2 0 0 1 3 0l5 4a2 2 0 0 1 0 3l-7 9H8Z"></path>
+                <path d="m8 9 8 7M9 20h12"></path></svg
+              ><span class="toolLabel">Ластик</span></button
+            ><button
+              type="button"
+              data-sketch-tool="auxErase"
+              data-icon="auxErase"
+              class="iconButton auxErase"
+              title="Удалить вспомогательные: рамкой пересечь ненужные элементы"
+              aria-label="Удалить вспомогательные: рамкой пересечь ненужные элементы"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2.5" y="2.5" width="19" height="19" rx="1" stroke-dasharray="3 2"></rect>
+                <path d="m7 14 6-7 5 4-5 7H10Z"></path>
+                <path d="m10 11 5 4"></path></svg
+              ><span class="toolLabel">Вспомог.</span></button
+            ><button
+              type="button"
+              data-sketch-tool="arcRadius"
+              data-icon="arcRadius"
+              class="iconButton tool-arcRadius"
+              title="Дуга по радиусу и углу поворота"
+              aria-label="Дуга по радиусу и углу поворота"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 20A16 16 0 0 1 20 4M4 20l10-10"></path>
+                <circle cx="4" cy="20" r="1.6" fill="currentColor"></circle>
+                <text
+                  x="12"
+                  y="20"
+                  fill="currentColor"
+                  stroke="none"
+                  font-family="Arial"
+                  font-size="9"
+                >
+                  R/°
+                </text></svg
+              ><span class="toolLabel">Дуга R / °</span></button
+            ><button
+              type="button"
+              data-sketch-tool="trim"
+              data-icon="trim"
+              class="iconButton tool-trim"
+              title="Обрезать участок до пересечений"
+              aria-label="Обрезать участок до пересечений"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="5" cy="6" r="3"></circle>
+                <circle cx="5" cy="18" r="3"></circle>
+                <path d="m8 8 13 12M8 16 21 4"></path></svg
+              ><span class="toolLabel">Обрезка</span></button
+            ><button
+              type="button"
+              data-sketch-tool="split"
+              data-icon="split"
+              class="iconButton tool-split"
+              title="Разделить элемент по пересечениям"
+              aria-label="Разделить элемент по пересечениям"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M2 12h7m6 0h7M12 3v18"></path>
+                <path d="m7 6 3 3-3 3m10-6-3 3 3 3" stroke-width="1.3"></path>
+                <circle cx="9" cy="12" r="1.5"></circle>
+                <circle cx="15" cy="12" r="1.5"></circle></svg
+              ><span class="toolLabel">Разделить</span>
+            </button>
+          </div>
+          <div class="constructionMode">
+            <label class="check"
+              ><input id="sketchConstruction" type="checkbox" /><span
+                class="constructionSample"
+                aria-hidden="true"
+              ></span
+              >Вспомогательная геометрия</label
+            >
+          </div>
+          <div class="row sketchSnap">
+            <label class="check"><input id="sketchSnap" type="checkbox" checked />Привязка</label
+            ><label
+              >Шаг, мм<input id="sketchStep" type="number" value="1" min=".001" step=".1"
+            /></label>
+          </div>
+          <div id="sketchRadiusFields" class="radiusFields" hidden>
+            <label
+              >Радиус скругления R, мм<input
+                id="sketchRadius"
+                type="number"
+                value="5"
+                min=".001"
+                step=".1"
+            /></label>
+          </div>
+          <div id="sketchChamferFields" class="radiusFields" hidden>
+            <label
+              >Фаска C, мм<input
+                id="sketchChamfer"
+                type="text"
+                inputmode="decimal"
+                value="1"
+                autocomplete="off"
+                spellcheck="false"
+            /></label>
+          </div>
+          <p id="sketchHint" class="sketchHint"></p>
+          <template id="sketchLegacyForm"
+            ><div id="sketchExact">
+              <label
+                >Элемент<select id="sketchType">
+                  <option value="line">Линия</option>
+                  <option value="arc">Дуга через 3 точки</option>
+                  <option value="circle">Окружность</option>
+                  <option value="rect">Прямоугольник</option>
+                </select></label
+              ><label id="sketchCircleModeField" class="circleModeField" hidden
+                >Размер окружности
+                <select id="sketchCircleMode">
+                  <option value="radius">Радиус</option>
+                  <option value="diameter">Диаметр</option>
+                </select></label
+              ><label id="sketchLineModeLabel"
+                >Задать линию<select id="sketchLineMode">
+                  <option value="points">Начало и конец</option>
+                  <option value="polar">Длина и угол</option>
+                </select></label
+              ><button
+                id="sketchPickAnchor"
+                type="button"
+                data-icon="anchor"
+                class="iconButton outline full"
+                title="Выбрать начало на чертеже"
+                aria-label="Выбрать начало на чертеже"
+              >
+                <svg
+                  viewbox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="7"></circle>
+                  <path d="M12 1v7m0 8v7M1 12h7m8 0h7"></path>
+                  <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+                </svg>
+              </button>
+              <div id="sketchFields" class="sketchFields"></div>
+              <label class="check"
+                ><input id="sketchLinked" type="checkbox" checked />Перемещать общие концы соседних
+                линий</label
+              ><button
+                id="sketchApply"
+                type="button"
+                data-icon="apply"
+                class="iconButton outline full"
+                title="Добавить элемент плана"
+                aria-label="Добавить элемент плана"
+              >
+                <svg
+                  viewbox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m4 12 5 5L20 5"></path>
+                  <path d="M20 13v8H3V4h9" stroke-width="1"></path>
+                </svg></button
+              ><button
+                id="sketchNewItem"
+                type="button"
+                hidden
+                data-icon="plus"
+                class="iconButton textBtn full"
+                title="Добавить другой элемент"
+                aria-label="Добавить другой элемент"
+              >
+                <svg
+                  viewbox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M6 12h12m-6-6v12"></path>
+                </svg>
+              </button></div
+          ></template>
+          <div class="sketchEntryActions">
+            <button
+              id="sketchScale"
+              type="button"
+              data-icon="scale"
+              class="iconButton"
+              title="Масштаб чертежа или выделенных элементов"
+              aria-label="Масштаб чертежа или выделенных элементов"
+              aria-controls="scaleEditor"
+              aria-haspopup="dialog"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 21V3h18v18Z" stroke-dasharray="3 3"></path>
+                <path d="M3 21V11h10v10ZM16 8l4-4m-4 0h4v4"></path></svg
+              ><span class="toolLabel">Масштаб</span></button
+            ><button
+              id="exportSketch"
+              type="button"
+              data-icon="export"
+              class="iconButton outline"
+              title="Скачать геометрию DXF"
+              aria-label="Скачать геометрию DXF"
+            >
+              <svg
+                viewbox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 2h10l4 4v16H5ZM15 2v5h4M12 8v8m-3-3 3 3 3-3"></path>
+                <text
+                  x="7"
+                  y="21"
+                  fill="currentColor"
+                  stroke="none"
+                  font-family="Arial"
+                  font-size="5"
+                >
+                  DXF
+                </text></svg
+              ><span class="toolLabel">DXF</span>
+            </button>
+          </div>
+        </section>
+      </div>
+      <div id="operationsPane" class="workPane" data-pane="operations" role="tabpanel">
+        <section class="coordinateSetup fanucFeed" aria-label="Координаты FANUC">
+          <label
+            >Координаты FANUC<select id="coordinateMode">
+              <option value="g90">G90 · абсолютные</option>
+              <option value="g91">G91 · приращения</option>
+            </select></label
+          >
+        </section>
+        <details id="operationOrigin" class="operationOrigin">
+          <summary>Ноль X/Y <span id="originSetupSummary">X0 · Y0</span></summary>
+          <section id="originSection" class="originSection">
+            <div class="originPanel" aria-label="Ноль детали и смещение X/Y">
+              <label class="check"
+                ><input id="localOrigin" type="checkbox" />Свой ноль этой операции</label
+              ><label class="check"
+                ><input id="activeOperationOnly" type="checkbox" />Рассчитать только эту
+                операцию</label
+              >
+              <div class="zeroHeading">
+                <h2>Ноль X/Y</h2>
+                <button
+                  id="pickOrigin"
+                  class="originIconButton"
+                  type="button"
+                  title="Выбрать ноль на чертеже"
+                  aria-label="Выбрать ноль на чертеже"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="6"></circle>
+                    <circle cx="12" cy="12" r="1.5"></circle>
+                    <path d="M12 2v5m0 10v5M2 12h5m10 0h5"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="originPlacement">
+                <div class="originAnchorBlock">
+                  <div class="originAnchorDiagram">
+                    <span class="originAxisY">+Y ↑</span>
+                    <div
+                      class="originAnchorGrid"
+                      role="group"
+                      aria-label="Положение нуля на общем плане"
+                    >
+                      <button
+                        id="originAnchorTL"
+                        class="originAnchorButton"
+                        data-origin-anchor="tl"
+                        type="button"
+                        title="Ноль сверху слева"
+                        aria-label="Ноль сверху слева"
+                        aria-pressed="false"
+                      >
+                        <span class="originDot" aria-hidden="true"></span></button
+                      ><button
+                        id="originAnchorTC"
+                        class="originAnchorButton"
+                        data-origin-anchor="tc"
+                        type="button"
+                        title="Ноль сверху по центру"
+                        aria-label="Ноль сверху по центру"
+                        aria-pressed="false"
+                      >
+                        <span class="originDot" aria-hidden="true"></span></button
+                      ><button
+                        id="originAnchorTR"
+                        class="originAnchorButton"
+                        data-origin-anchor="tr"
+                        type="button"
+                        title="Ноль сверху справа"
+                        aria-label="Ноль сверху справа"
+                        aria-pressed="false"
+                      >
+                        <span class="originDot" aria-hidden="true"></span></button
+                      ><button
+                        id="originAnchorCL"
+                        class="originAnchorButton"
+                        data-origin-anchor="cl"
+                        type="button"
+                        title="Ноль слева по центру"
+                        aria-label="Ноль слева по центру"
+                        aria-pressed="false"
+                      >
+                        <span class="originDot" aria-hidden="true"></span></button
+                      ><button
+                        id="originAnchorC"
+                        class="originAnchorButton active"
+                        data-origin-anchor="center"
+                        type="button"
+                        title="Ноль в центре плана"
+                        aria-label="Ноль в центре плана"
+                        aria-pressed="true"
+                      >
+                        <span class="originDot" aria-hidden="true"></span></button
+                      ><button
+                        id="originAnchorCR"
+                        class="originAnchorButton"
+                        data-origin-anchor="cr"
+                        type="button"
+                        title="Ноль справа по центру"
+                        aria-label="Ноль справа по центру"
+                        aria-pressed="false"
+                      >
+                        <span class="originDot" aria-hidden="true"></span></button
+                      ><button
+                        id="originAnchorBL"
+                        class="originAnchorButton"
+                        data-origin-anchor="bl"
+                        type="button"
+                        title="Ноль снизу слева"
+                        aria-label="Ноль снизу слева"
+                        aria-pressed="false"
+                      >
+                        <span class="originDot" aria-hidden="true"></span></button
+                      ><button
+                        id="originAnchorBC"
+                        class="originAnchorButton"
+                        data-origin-anchor="bc"
+                        type="button"
+                        title="Ноль снизу по центру"
+                        aria-label="Ноль снизу по центру"
+                        aria-pressed="false"
+                      >
+                        <span class="originDot" aria-hidden="true"></span></button
+                      ><button
+                        id="originAnchorBR"
+                        class="originAnchorButton"
+                        data-origin-anchor="br"
+                        type="button"
+                        title="Ноль снизу справа"
+                        aria-label="Ноль снизу справа"
+                        aria-pressed="false"
+                      >
+                        <span class="originDot" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                    <span class="originAxisX">+X →</span>
+                  </div>
+                  <span id="originAnchorName" class="originAnchorName">Центр плана</span>
+                </div>
+                <div class="originOffsetGroup">
+                  <div class="originOffsetHeading">
+                    <h3>Смещение, мм</h3>
+                    <button
+                      id="originOffsetsReset"
+                      class="originIconButton"
+                      type="button"
+                      title="Сбросить смещения X/Y"
+                      aria-label="Сбросить смещения X/Y"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M4 10a8 8 0 1 1 .7 7M4 4v6h6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <label
+                    >ΔX<input
+                      id="originShiftX"
+                      type="text"
+                      inputmode="decimal"
+                      value="0"
+                      autocomplete="off"
+                      spellcheck="false"
+                      title="Положительное ΔX переносит ноль вправо на плане" /></label
+                  ><label
+                    >ΔY<input
+                      id="originShiftY"
+                      type="text"
+                      inputmode="decimal"
+                      value="0"
+                      autocomplete="off"
+                      spellcheck="false"
+                      title="Положительное ΔY переносит ноль вверх на плане"
+                  /></label>
+                </div>
+              </div>
+              <details class="originAlternative">
+                <summary>Координаты нуля</summary>
+                <label
+                  >Положение<select id="originPreset">
+                    <option value="tl" selected>Сверху слева</option>
+                    <option value="tc">Сверху по центру</option>
+                    <option value="tr">Сверху справа</option>
+                    <option value="cl">Слева по центру</option>
+                    <option value="center">Центр плана</option>
+                    <option value="cr">Справа по центру</option>
+                    <option value="bl">Снизу слева</option>
+                    <option value="bc">Снизу по центру</option>
+                    <option value="br">Снизу справа</option>
+                    <option value="drawing">Исходный X0 / Y0</option>
+                    <option value="custom">Своя точка X / Y</option>
+                  </select></label
+                >
+                <div class="row" id="originFields" hidden>
+                  <label>X нуля, мм<input id="originX" type="number" value="0" step=".001" /></label
+                  ><label
+                    >Y нуля, мм<input id="originY" type="number" value="0" step=".001"
+                  /></label>
+                </div>
+              </details>
+              <output id="originReadout" class="originReadout" role="status" aria-live="polite"
+                >Ноль в плане: X0 · Y0</output
+              >
+            </div>
+          </section>
+        </details>
+        <details id="zReferenceSection" class="zReferenceSection">
+          <summary>Привязка Z <span id="zReferenceSummary">Плитка + радиус</span></summary>
+          <label class="check"
+            ><input id="zReferenceEnabled" type="checkbox" checked />По плитке, к центру радиуса
+            фрезы</label
+          >
+          <label
+            >Высота плитки, мм<input
+              id="zReferencePlate"
+              type="number"
+              value="30"
+              min=".001"
+              max="999"
+              step=".001"
+          /></label>
+          <label
+            >Поверхность касания<select id="zReferenceSurfaceMode">
+              <option value="top">Верх детали по чертежу</option>
+              <option value="manual">Задать высоту от нуля детали</option>
+            </select></label
+          >
+          <label id="zReferenceSurfaceField" hidden
+            >Z поверхности от нуля, мм<input
+              id="zReferenceSurfaceZ"
+              type="number"
+              value="0"
+              step=".001"
+          /></label>
+          <button
+            id="zReferenceTopLeft"
+            data-origin-anchor="tl"
+            type="button"
+            class="outline small"
+          >
+            Ноль сверху слева
+          </button>
+          <output id="zReferenceReadout" role="status" aria-live="polite"></output>
+          <small
+            >Плитка 30 мм и фреза Ø10: при нуле на верхней грани — Z35000. Радиус берётся из
+            диаметра инструмента. В XZ/YZ верх определяется по чертежу, в XY — полем «Z верха». Для
+            другой поверхности задайте её высоту от нуля.</small
+          >
+        </details>
+        <section id="operationPanel" class="operationPanel" aria-label="Операции">
+          <div class="paneHeading">
+            <h2>Операции</h2>
+            <span id="operationCount" class="counter">1</span>
+          </div>
+          <div class="operationChoiceRow">
+            <select
+              id="operationChoice"
+              aria-label="Текущая операция"
+              title="Операции выполняются по порядку"
+              size="3"
+            ></select>
+          </div>
+          <div class="operationOrder" role="group" aria-label="Управление операциями">
+            <button
+              id="addMillOperation"
+              type="button"
+              class="outline"
+              title="Добавить фрезерование"
+            >
+              + Фреза</button
+            ><button
+              id="addDrillOperation"
+              type="button"
+              class="outline"
+              title="Добавить сверление"
+            >
+              + Сверло</button
+            ><button
+              id="moveOperationUp"
+              type="button"
+              class="outline"
+              title="Поднять операцию"
+              aria-label="Поднять операцию"
+            >
+              ↑</button
+            ><button
+              id="moveOperationDown"
+              type="button"
+              class="outline"
+              title="Опустить операцию"
+              aria-label="Опустить операцию"
+            >
+              ↓</button
+            ><button
+              id="removeOperation"
+              type="button"
+              class="outline"
+              title="Удалить операцию"
+              aria-label="Удалить операцию"
+            >
+              ×
+            </button>
+          </div>
+        </section>
+        <section class="operationSetup" aria-label="Инструмент и контуры">
+          <div class="operationToolRow">
+            <label>Инструмент из базы<select id="operationTool"></select></label
+            ><button
+              id="openCatalog"
+              type="button"
+              class="outline"
+              title="База инструментов"
+              aria-label="База инструментов"
+            >
+              База</button
+            ><label class="colorField" title="Цвет элементов текущей операции"
+              >Цвет<input
+                id="operationColor"
+                type="color"
+                value="#d52b3e"
+                title="Цвет операции"
+                aria-label="Цвет операции"
+            /></label>
+          </div>
+          <div class="operationCommands">
+            <button
+              id="markOperation"
+              type="button"
+              class="outline operationMark"
+              title="Щёлкни по линиям контура или центрам отверстий. Повторный щелчок снимает назначение."
+            >
+              Назначить элементы
+            </button>
+          </div>
+        </section>
+        <section class="mainSettings" aria-label="Параметры операции">
+          <label
+            >Рабочая плоскость<select id="workPlane">
+              <option value="xy">XY · глубина Z</option>
+              <option value="zx">XZ · G18 · глубина Y</option>
+              <option value="yz">YZ · G19 · глубина X</option>
+            </select></label
+          >
+          <div id="profileFields" class="row">
+            <label
+              >Способ<select id="toolKind">
+                <option value="scribe">Конус</option>
+                <option value="mill" selected>Фреза</option>
+                <option value="g25">Цикл G25 (копия)</option>
+              </select></label
+            ><label
+              >Глубина, мм<input
+                id="depth"
+                type="number"
+                value="-1"
+                step=".01"
+                aria-label="Глубина обработки, мм"
+            /></label>
+          </div>
+          <div id="drillFields" hidden>
+            <label
+              >Цикл сверления<select id="drillCycle">
+                <option value="81">G81 · обычное сверление</option>
+                <option value="82">G82 · сверление с выдержкой</option>
+                <option value="83">G83 · полный отвод</option>
+                <option value="73">G73 · дробление стружки</option>
+              </select></label
+            ><label title="Отвод между отверстиями"
+              >Отвод между отверстиями<select id="drillReturn">
+                <option value="98">G98 · до безопасного Z</option>
+                <option value="99">G99 · до высоты R</option>
+              </select></label
+            >
+            <div class="row">
+              <label
+                >Глубина от верха, мм<input
+                  id="drillDepth"
+                  type="number"
+                  min=".001"
+                  step=".001" /></label
+              ><label
+                >R над верхом, мм<input
+                  id="drillClearance"
+                  type="number"
+                  min=".001"
+                  step=".001"
+                  value="1"
+              /></label>
+            </div>
+            <div class="row">
+              <label
+                >Подача, мм/мин<input
+                  id="drillFeed"
+                  type="number"
+                  min=".1"
+                  max="3600"
+                  step=".1" /></label
+              ><label id="drillPeckField" title="Шаг Q (1 мм = 1000)" hidden
+                >Шаг Q (1 мм = 1000)<input
+                  id="drillPeck"
+                  type="number"
+                  min="1"
+                  step="1"
+                  value="150"
+              /></label>
+            </div>
+            <label id="drillDwellField" hidden
+              >Выдержка на дне, с<input
+                id="drillDwell"
+                type="number"
+                min="0"
+                max="1048.575"
+                step=".001"
+                value="0" /></label
+            ><small id="drillHint" hidden>Сверление доступно в профиле FANUC 3000C.</small>
+          </div>
+          <div class="row feedSettings">
+            <label class="check fanucFeed" title="Одна подача в шапке для всей операции"
+              ><input id="feedInHeader" type="checkbox" checked />Единая F</label
+            ><label id="headerFeedField"
+              >Подача F в коде<input
+                id="headerFeed"
+                type="number"
+                min="1"
+                max="36000"
+                step="1"
+                value="100" /></label
+            ><label id="feedField"
+              >Подача, мм/мин<input id="feed" type="number" value="10" min=".1" step="1"
+            /></label>
+          </div>
+          <small id="feedCodeReadout" class="contextHint" aria-live="polite"></small>
+          <div id="millFields" hidden>
+            <div class="row">
+              <label
+                >Ø фрезы, мм<input
+                  id="diameter"
+                  type="number"
+                  value="8"
+                  min=".01"
+                  step=".1" /></label
+              ><label
+                >Шаг по глубине, мм<input
+                  id="stepDown"
+                  type="number"
+                  value="1"
+                  min=".001"
+                  step=".1"
+              /></label>
+            </div>
+            <label class="cutSideField">Обработка<select id="cutSide"></select></label>
+            <div class="repeatSection" id="repeatSection">
+              <label
+                >Режим повторения<select id="repeatMode">
+                  <option value="none" selected>Нет</option>
+                  <option value="g25">G25</option>
+                  <option value="m98">Вспомогательная M98·M99</option>
+                </select></label
+              >
+              <div id="g25Fields" hidden>
+                <label class="check"
+                  ><input id="g25Reverse" type="checkbox" checked />Реверсный проход</label
+                >
+                <label
+                  ><span id="g25ShiftLabel">Смещение по оси углубления, мм</span
+                  ><input id="g25Shift" type="number" value="0.2" step=".001"
+                /></label>
+                <small
+                  >Смещение выполняется после каждого прохода. R задаёт дополнительные повторы
+                  участка (пары проходов при реверсе). P и Q назначаются автоматически. На обратном
+                  проходе попутное и встречное направления меняются местами.</small
+                ><small id="g25Travel"></small>
+                <label hidden
+                  >Начало (P)<input id="g25P" type="number" value="1" min="1" step="1" /></label
+                ><label hidden
+                  >Конец (Q)<input id="g25Q" type="number" value="1" min="1" step="1" /></label
+                ><label
+                  >Дополнительные повторы (R)<input
+                    id="g25R"
+                    type="number"
+                    value="1"
+                    min="1"
+                    step="1"
+                /></label>
+              </div>
+              <div id="m98Fields" hidden>
+                <div class="row">
+                  <label
+                    >Дополнительные повторы (R)<input
+                      id="m98R"
+                      type="number"
+                      value="8"
+                      min="1"
+                      max="9999"
+                      step="1" /></label
+                  ><label
+                    >Возврат M99<select id="m98ReturnMode">
+                      <option value="next" selected>Следующий кадр</option>
+                      <option value="p">Возврат в кадр P…</option>
+                    </select></label
+                  >
+                </div>
+                <div class="row" id="m98PField" hidden>
+                  <label
+                    >Номер кадра возврата (P)<input
+                      id="m98ReturnP"
+                      type="number"
+                      value="9"
+                      min="1"
+                      max="999"
+                      step="1"
+                  /></label>
+                </div>
+                <div class="row">
+                  <label
+                    >Шаг X, мм<input id="m98StepX" type="number" value="150" step="0.1" /></label
+                  ><label
+                    >Шаг Y, мм<input id="m98StepY" type="number" value="0" step="0.1"
+                  /></label>
+                </div>
+                <button
+                  id="extractRepeatsToM98"
+                  type="button"
+                  class="outline small full"
+                  style="margin-top: 4px"
+                  title="Вынести повторяющиеся контуры в M98"
+                >
+                  Вынести повторяющиеся контуры в M98
+                </button>
+              </div>
+            </div>
+            <label id="directionField"
+              >Направление<select id="direction">
+                <option value="climb">Попутное, M03</option>
+                <option value="conventional">Встречное, M03</option>
+              </select></label
+            ><label class="check fanucFeature" id="g12Field" title="Цикл расфрезерования G12/G13"
+              ><input id="g12Cycle" type="checkbox" />Цикл расфрезерования G12/G13</label
+            ><label
+              >Скругление в УП, R мм<input
+                id="cornerRadius"
+                type="number"
+                value="0"
+                min="0"
+                max="1000"
+                step=".1"
+                title="Скругление углов, 0 — по чертежу"
+                aria-label="Радиус скругления углов обработки, мм" /></label
+            ><small id="openWallHelp" hidden class="contextHint"></small>
+            <details class="entryControls" id="entryControls">
+              <summary>Заход и выход</summary>
+              <label
+                >Режим захода<select id="entryMode">
+                  <option value="auto">Автоматически</option>
+                  <option value="manual">Ручная настройка</option>
+                </select></label
+              >
+              <div id="entryAutoSettings" class="entrySection">
+                <div class="entrySectionTitle">Параметры захода (по умолчанию)</div>
+                <div class="row">
+                  <label
+                    ><span id="defaultLeadCaption">Радиус захода R, мм</span
+                    ><input id="lead" type="number" value="0.1" min="0" step="0.05" /></label
+                  ><label id="entryRunField"
+                    >Прямой подвод, мм<input
+                      id="entryRun"
+                      type="text"
+                      inputmode="decimal"
+                      value="0.1"
+                      placeholder="0.1"
+                  /></label>
+                </div>
+                <div class="row">
+                  <label id="entryAngleField"
+                    >Направление подхода, °<input
+                      id="entryAngle"
+                      type="number"
+                      value="0"
+                      step="1" /></label
+                  ><label
+                    >Погружение от контура<input
+                      id="autoPlungeInfo"
+                      type="text"
+                      value="R фрезы + 5 мм"
+                      readonly
+                  /></label>
+                </div>
+                <div class="entrySectionTitle" style="margin-top: 6px">
+                  Параметры выхода (независимо)
+                </div>
+                <div class="row">
+                  <label
+                    >Отступ выхода, мм<input
+                      id="exitOffset"
+                      type="number"
+                      value="0.1"
+                      min="0"
+                      step="0.05" /></label
+                  ><label
+                    >Зазор безопасности, мм<input
+                      id="safetyGap"
+                      type="number"
+                      value="0.1"
+                      min="0"
+                      step="0.05"
+                  /></label>
+                </div>
+                <div style="margin-top: 6px">
+                  <button id="makeManual" class="outline small full" type="button">
+                    Сделать ручным
+                  </button>
+                </div>
+              </div>
+              <small id="automaticEntrySummary"
+                >Свободная точка (R фрезы + 5 мм), подвод и дуга подбираются автоматически.</small
+              >
+              <div id="entryManualControls">
+                <div class="entrySection" id="entryPointsSection">
+                  <div class="entrySectionTitle">Выбор точек на чертеже</div>
+                  <div class="entryPointActions">
+                    <button
+                      id="pickStart"
+                      class="outline"
+                      type="button"
+                      aria-label="Выбрать касание контура"
+                    >
+                      Касание контура</button
+                    ><button
+                      id="pickEntryStart"
+                      class="outline"
+                      type="button"
+                      aria-label="Выбрать погружение"
+                    >
+                      Погружение</button
+                    ><button id="pickExit" class="outline" type="button" aria-label="Выбрать выход">
+                      Выход
+                    </button>
+                  </div>
+                  <div class="entryActionsRow">
+                    <button
+                      id="resetStart"
+                      class="outline small"
+                      type="button"
+                      aria-label="Сбросить все точки"
+                    >
+                      Сбросить обе точки</button
+                    ><button id="resetEntryStart" class="outline small" type="button">
+                      Начало: авто</button
+                    ><button id="resetExit" class="outline small" type="button">Выход: авто</button>
+                  </div>
+                  <div class="entryActionsRow" style="margin-top: 4px">
+                    <button
+                      id="fixEntryAuto"
+                      class="outline small"
+                      type="button"
+                      style="display: none"
+                    >
+                      Исправить автоматически</button
+                    ><button id="showEntryZones" class="outline small" type="button">
+                      Показать зоны
+                    </button>
+                  </div>
+                </div>
+                <details id="entryCoordinates" class="entrySection entryCoordinates">
+                  <summary style="cursor: pointer; font-weight: 600; padding: 4px 0">
+                    Дополнительно: точные координаты, мм
+                  </summary>
+                  <div class="entryCoordsRow" id="entryPlungeCoordsRow">
+                    <label
+                      ><span id="entryAxisU">X</span
+                      ><input id="entryStartX" type="text" inputmode="decimal" value="0" /></label
+                    ><label
+                      ><span id="entryAxisV">Y</span
+                      ><input id="entryStartY" type="text" inputmode="decimal" value="0" /></label
+                    ><button id="applyEntryStart" class="outline small" type="button">ОК</button>
+                  </div>
+                  <div class="entryCoordsRow" id="entryExitCoordsRow">
+                    <label
+                      ><span id="exitAxisU">X вых</span
+                      ><input
+                        id="entryExitX"
+                        type="text"
+                        inputmode="decimal"
+                        value=""
+                        placeholder="авто" /></label
+                    ><label
+                      ><span id="exitAxisV">Y вых</span
+                      ><input
+                        id="entryExitY"
+                        type="text"
+                        inputmode="decimal"
+                        value=""
+                        placeholder="авто" /></label
+                    ><button id="applyExit" class="outline small" type="button">ОК</button>
+                  </div>
+                  <small id="entrySummary">Касание выбирается автоматически</small
+                  ><small id="entryStartSummary"
+                    >Начало погружения рассчитывается по касанию и R</small
+                  ><small id="entryExitSummary">Выход: авто</small>
+                </details>
+                <div class="entrySection" id="entryRadiusSection">
+                  <label class="check"
+                    ><input id="autoLead" type="checkbox" checked /><span id="autoLeadCaption"
+                      >Авто-минимум</span
+                    ></label
+                  ><label
+                    ><span id="leadCaption">R захода, мм</span
+                    ><input id="manualLead" type="number" value="0.1" min="0" step=".5"
+                  /></label>
+                </div>
+                <div class="entrySection" id="entryOpenWallSection">
+                  <div class="entrySectionTitle">Открытая стенка</div>
+                  <label id="openOffsetField" hidden
+                    >Сторона фрезы<select id="openOffsetSide">
+                      <option value="auto">Авто · по полной границе детали</option>
+                      <option value="left">Слева от обхода · G41</option>
+                      <option value="right">Справа от обхода · G42</option>
+                    </select></label
+                  ><label class="check"
+                    ><input id="directedEntry" type="checkbox" />Угол подхода к открытой
+                    стенке</label
+                  >
+                </div>
+                <small id="entryRule" class="contextHint"
+                  >Зелёная метка — касание. Оранжевая — погружение. Синяя — выход.</small
+                >
+              </div>
+            </details>
+            <label class="check"
+              ><input
+                id="autoFit"
+                type="checkbox"
+                checked
+                title="Оставить недоступные углы для меньшей фрезы"
+              />Обход доступных участков</label
+            ><label
+              >Коррекция радиуса<select id="compMode">
+                <option value="tool">По форме и радиусу инструмента</option>
+                <option value="center">G40 — радиус в координатах</option>
+                <option value="control">G41 / G42 — значение корректора</option>
+                <option value="wear">D — радиус в координатах, D = 0</option>
+              </select></label
+            >
+            <div id="correctorField" class="row" hidden>
+              <label
+                >Номер ячейки D<input
+                  id="corrector"
+                  type="number"
+                  value="1"
+                  min="0"
+                  max="31"
+                  step="1" /></label
+              ><label
+                >Значение D, 0,001 мм<input
+                  id="correctionValue"
+                  type="number"
+                  value="4000"
+                  min="0"
+                  max="999999"
+                  step="1"
+                  aria-label="Значение корректора в отсчётах 0,001 мм"
+              /></label>
+            </div>
+            <div id="toolProfileFields" hidden>
+              <label
+                >Форма инструмента<select id="toolShape">
+                  <option value="ball_mill">Сферическая фреза</option>
+                  <option value="end_mill">Концевая фреза</option>
+                  <option value="bull_mill">Фреза со скруглённой кромкой</option>
+                </select></label
+              >
+              <label
+                >Радиус скругления, мм<input
+                  id="toolProfileRadius"
+                  type="number"
+                  value="2"
+                  min=".001"
+                  step=".1"
+              /></label>
+              <label
+                >Рабочая длина, мм<input
+                  id="toolWorkingLength"
+                  type="number"
+                  value="16"
+                  min=".001"
+                  step=".1"
+              /></label>
+              <small id="toolProfileReadout"></small>
+            </div>
+            <small id="compModeHelp" class="contextHint"></small>
+          </div>
+          <details id="contoursDetail">
+            <summary>
+              Контуры <span id="contourCount"></span
+              ><button id="selectAll" class="textBtn" title="Все">Все</button>
+            </summary>
+            <div id="contourList" class="contourList"></div>
+          </details>
+          <details id="cutExtras">
+            <summary>Высоты, подача и припуски</summary>
+            <label
+              ><span id="topAxisLabel">Z верха, мм</span
+              ><input id="topZ" type="number" value="0" step=".1" /></label
+            ><label
+              ><span id="safeAxisLabel">Z безопасный, мм</span
+              ><input id="safeZ" type="number" value="30" min="30" step=".001" /></label
+            ><label
+              >Подход над верхом, мм<input
+                id="approach"
+                type="number"
+                value=".5"
+                min=".001"
+                step=".1" /></label
+            ><label class="fanucFeed"
+              >Врезание, мм/мин<input id="plunge" type="number" value="4" min=".1" /></label
+            ><label>Обороты на станке<input id="rpm" type="number" value="450" min="1" /></label
+            ><label>Зубьев<input id="flutes" type="number" value="4" min="1" step="1" /></label
+            ><label
+              >Припуск в конце, мм<input
+                id="allowance"
+                type="number"
+                value="0"
+                min="0"
+                step=".05" /></label
+            ><label
+              >Боковой припуск, мм<input
+                id="stockAllowance"
+                type="number"
+                value="0"
+                min="0"
+                step=".1" /></label
+            ><label
+              >Шаг вбок, мм<input
+                id="stepOver"
+                type="number"
+                value="1"
+                min=".01"
+                step=".1" /></label
+            ><label class="check"
+              ><input id="slowArcs" type="checkbox" checked />Замедлять дуги и углы</label
+            ><label id="slowFeedPercentField"
+              >На дугах и углах, % основной<input
+                id="slowFeedPercent"
+                type="number"
+                value="50"
+                min="1"
+                max="100"
+                step="1" /></label
+            ><label
+              >Заготовка для проверки входа<select id="stockShape">
+                <option value="none">Не задана</option>
+                <option value="circle">Кругляк</option>
+              </select></label
+            ><label class="check fanucFeature"
+              ><input id="allowPlunge" type="checkbox" />Разрешить осевое врезание фрезой</label
+            >
+            <div id="stockCircle" hidden>
+              <div class="row">
+                <label
+                  >Ø заготовки, мм<input id="stockDia" type="number" value="26" min=".01" /></label
+                ><label>X центра, мм<input id="stockX" type="number" value="0" step=".1" /></label>
+              </div>
+              <label>Y центра, мм<input id="stockY" type="number" value="0" step=".1" /></label>
+            </div>
+            <small id="feedSlowReadout" class="contextHint"></small>
+            <div class="metricBar">
+              <span>На зуб <b id="fz">—</b></span
+              ><span>Vc <b id="vc">—</b></span>
+            </div>
+          </details>
+        </section>
+      </div>
+      <div id="machinePane" class="workPane" data-pane="machine" role="tabpanel">
+        <section id="advanced" class="advanced">
+          <h2 id="advancedSummary">Параметры станка</h2>
+          <div>
+            <div class="fanucFeed codeSettings">
+              <h3>Код FANUC</h3>
+              <div class="row">
+                <label
+                  >Пробелы после «(»<input
+                    id="toolNameSpaces"
+                    type="number"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="15"
+                    required /></label
+                ><label class="check"
+                  ><input id="stopSpindle" type="checkbox" />M05 перед остановкой</label
+                >
+              </div>
+            </div>
+            <div class="serviceCommands">
+              <h3>Служебные команды</h3>
+              <label class="check"
+                ><input id="spindleCommand" type="checkbox" />Запускать шпиндель командой S…
+                M03</label
+              ><label class="check"><input id="coolant" type="checkbox" />СОЖ M08 / M09</label
+              ><small>Каждая операция возвращается в X0 Y0 и Z своей привязки.</small
+              ><label class="check"
+                ><input id="lineNumbers" type="checkbox" checked /><span id="lineNumbersLabel"
+                  >Номера N001…N999</span
+                ></label
+              ><label class="fanucFeed"
+                >Последняя операция<select id="endCode">
+                  <option value="M02" selected>M02 · конец программы</option>
+                  <option value="M00">M00 · остановка</option>
+                  <option value="M30">M30 · конец и возврат</option>
+                </select></label
+              >
+            </div>
+            <details>
+              <summary>Единицы и точность DXF</summary>
+              <label
+                >Единицы исходного DXF<select id="dxfUnits">
+                  <option value="auto">Из файла / мм, если не заданы</option>
+                  <option value="1">1 единица = 1 мм</option>
+                  <option value="25.4">Дюйм: 1 единица = 25,4 мм</option>
+                  <option value="10">Сантиметр: 1 единица = 10 мм</option>
+                  <option value="1000">Метр: 1 единица = 1000 мм</option>
+                </select></label
+              >
+              <div class="row">
+                <label
+                  >Допуск кривых, мм<input
+                    id="tolerance"
+                    type="number"
+                    value=".02"
+                    min=".001"
+                    step=".001" /></label
+                ><label
+                  >Стыковка DXF, мм<input
+                    id="joinTolerance"
+                    type="number"
+                    value=".01"
+                    min=".0001"
+                    step=".001"
+                /></label>
+              </div>
+            </details>
+            <div id="zPreview" class="formatExample" hidden="hidden"></div>
+          </div>
+        </section>
+        <button class="textBtn" id="ncMode" title="Редактор готовой программы">
+          Редактор готовой программы
+        </button>
+      </div>
+    </div>
+    <div class="ncOnly" hidden>
+      <section>
+        <h2 id="ncTitle">Код FANUC 3000C</h2>
+        <p class="ncWarningNote" id="ncWarningNote">
+          Текущий прогресс чертежа, обработки при согласии будет удален.
+        </p>
+        <button id="demoNc" class="outline full" title="Пример 123.txt">Пример 123.txt</button
+        ><button id="extractNc" class="outline full" title="Извлечь контуры">Извлечь контуры</button
+        ><label
+          >Участок<select id="ncSection">
+            <option value="all">Вся программа</option>
+          </select></label
+        >
+        <details>
+          <summary>Изменить существующий код</summary>
+          <div class="row">
+            <label
+              ><span id="ncShiftU">Сдвиг X, мм</span
+              ><input id="ncDx" type="number" value="0" step=".1" /></label
+            ><label
+              ><span id="ncShiftV">Сдвиг Y, мм</span
+              ><input id="ncDy" type="number" value="0" step=".1"
+            /></label>
+          </div>
+          <label
+            ><span id="ncDepthAxis">Конечная глубина от Z0, мм</span
+            ><input
+              id="ncDepth"
+              type="number"
+              placeholder="Как в коде"
+              min=".001"
+              step=".1" /></label
+          ><label
+            ><span id="ncFeedCaption">Максимальная подача, мм/мин</span
+            ><input id="ncFeed" type="number" placeholder="Как в коде" min=".1" /></label
+          ><label
+            ><span id="ncSafeAxis">Положительный Z в G00, мм</span
+            ><input id="ncSafe" type="number" placeholder="Не менять" min=".001" /></label
+          ><label class="check"><input id="ncCycles" type="checkbox" />Также менять сверление</label
+          ><button id="applyNc" class="outline full" title="Применить">Применить</button
+          ><button id="renumberNc" class="outline full" type="button" title="Перенумеровать кадры">
+            Перенумеровать кадры N</button
+          ><button id="undoNc" class="textBtn" disabled title="Отменить изменение">
+            Отменить изменение
+          </button>
+        </details>
+      </section>
+    </div>
+    <div hidden>
+      <select id="dialect">
+        <option value="legacy">FANUC 3000C</option>
+      </select>
+      <div id="scales">
+        <input id="coordScale" value="1000" readonly /><input id="feedScale" value="10" readonly />
+      </div>
+      <div id="formatExample"></div>
+    </div>
+    <div id="fixedFrameInputs" hidden>
+      <input id="workPlaneExplicit" type="checkbox" /><input
+        id="endZ"
+        type="number"
+        value="30"
+        readonly
+      /><input id="initialX" type="number" value="0" readonly /><input
+        id="initialY"
+        type="number"
+        value="0"
+        readonly
+      /><input id="initialZ" type="number" value="30" readonly /><input
+        id="useG92"
+        type="checkbox"
+        checked
+      />Присвоить текущие координаты через G92<input
+        id="returnXY"
+        type="checkbox"
+        checked
+        disabled
+        hidden
+      />
+    </div>
+  </div>
+  <div class="exportPanel">
+    <button id="generate" class="dxfOnly primary full" title="Рассчитать траекторию">
+      Рассчитать траекторию</button
+    ><button id="parseNc" class="ncOnly primary full" hidden title="Проверить программу">
+      Проверить программу
+    </button>
+    <div class="row">
+      <button id="exportTxt" class="exportMain" disabled title="↓ TXT для станка">
+        ↓ TXT для станка</button
+      ><button id="exportNc" class="outline" disabled title="NC">NC</button>
+    </div>
+  </div>
+</aside>

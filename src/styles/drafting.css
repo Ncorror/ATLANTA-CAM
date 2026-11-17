@@ -1,0 +1,484 @@
+/* Построения, размеры, инструменты и диагностика. Порядок каскада: см. index.css. */
+.draftPanel {
+  position: absolute;
+  left: 14px;
+  bottom: 62px;
+  max-width: calc(100% - 28px);
+  width: 365px;
+  padding: 9px 10px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid #88afe5;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px #123e6414;
+  z-index: 4;
+  color: #234a75;
+}
+
+.draftHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.draftHeading b {
+  font-size: 11px;
+}
+
+.draftHeading button {
+  font-size: 9px;
+  padding: 2px 5px;
+  min-height: 21px;
+  color: #37659a;
+}
+
+.draftFields {
+  display: flex;
+  grid-gap: 5px;
+  align-items: flex-end;
+}
+
+.draftFields label {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 9px;
+  color: #41648a;
+}
+
+.draftFields input {
+  margin-top: 2px !important;
+  padding: 4px 6px !important;
+  min-height: 30px !important;
+  font:
+    12px Consolas,
+    monospace !important;
+  background: #f5f9ff !important;
+  color: #144b9e !important;
+}
+
+.draftFields > button {
+  padding: 4px 7px;
+  min-height: 30px;
+  font-size: 10px;
+  background: #e8f1ff;
+  border-color: #9ebce6;
+  color: #1b55a3;
+}
+
+.draftPanel output {
+  display: block;
+  font:
+    10px/1.6 Consolas,
+    monospace;
+  margin-top: 5px;
+  color: #1b55a3;
+}
+
+.draftPanel small {
+  font-size: 9px;
+  color: #617b97;
+}
+
+.viewLegend .cyan {
+  background: rgba(45, 126, 224, 0.62);
+}
+
+#sketchPickAnchor.active {
+  background: #e4efff;
+  border-color: #6d9bd7;
+}
+
+.drawing .gridBadge {
+  bottom: 68px;
+}
+
+.drawing .coordinates {
+  bottom: 42px;
+}
+
+@media (max-width: 620px) {
+  .draftPanel {
+    bottom: 65px;
+    width: 330px;
+    left: 9px;
+    padding: 7px;
+  }
+  .draftFields {
+    grid-gap: 4px;
+  }
+}
+
+.dimEditor {
+  position: absolute;
+  z-index: 6;
+  width: 240px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #7ea8d8;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(18, 62, 100, 0.18);
+  color: #1c426e;
+  font-size: 11px;
+}
+
+.dimEditorTitle {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 11px;
+  color: #134785;
+}
+
+.dimEditorRow {
+  display: flex;
+  align-items: center;
+  grid-gap: 6px;
+  margin-bottom: 8px;
+}
+
+.dimEditorRow input {
+  flex: 1;
+  font:
+    bold 14px Consolas,
+    monospace !important;
+  padding: 5px 8px !important;
+  border: 1px solid #7ea8d8 !important;
+  border-radius: 4px !important;
+  background: #f5f9ff !important;
+  color: #0e3c75 !important;
+  text-align: right;
+}
+
+.dimEditorUnit {
+  font-size: 12px;
+  font-weight: 600;
+  color: #557494;
+}
+
+.dimEditorDirection {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 4px;
+  margin-bottom: 10px;
+  font-size: 10px;
+  color: #2c4e70;
+}
+
+.dimEditorDirection label {
+  display: flex;
+  align-items: center;
+  grid-gap: 5px;
+  cursor: pointer;
+}
+
+.dimEditorActions {
+  display: flex;
+  grid-gap: 5px;
+  justify-content: flex-end;
+}
+
+.dimEditorActions button {
+  padding: 4px 8px;
+  font-size: 10px;
+  min-height: 24px;
+}
+
+.drawing #scaleDrawing {
+  display: none;
+}
+
+.scaleEditor {
+  z-index: 7;
+  top: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  max-width: calc(100% - 24px);
+  max-height: calc(100% - 56px);
+  overflow: auto;
+}
+
+.scaleEditor h2 {
+  margin: 0 0 6px;
+  font-size: 13px;
+}
+
+.scaleEditor p {
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.scaleFields {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-gap: 8px;
+  margin-bottom: 8px;
+}
+
+.scaleFields label {
+  min-width: 0;
+}
+
+.viewLegend .grey {
+  background: #405870;
+}
+
+.viewLegend .cyan {
+  background: rgba(45, 126, 224, 0.72);
+}
+
+.sketchActions .auxErase {
+  grid-column: 1 / -1;
+  min-height: 30px;
+  border-color: #c29aa0;
+  color: #8a3844;
+}
+
+.draftToolMarks {
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px solid #d5e3ed;
+}
+
+.fractionHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #426783;
+  margin-bottom: 4px;
+}
+
+.fractionHeading b {
+  font:
+    11px Consolas,
+    monospace;
+  color: #155396;
+}
+
+.fractionButtons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 4px;
+}
+
+.fractionButtons button {
+  min-width: 0;
+  min-height: 27px;
+  padding: 3px 2px;
+  font-size: 9px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  background: #f3f8fd;
+  border: 1px solid #b6cde1;
+  color: #205b91;
+}
+
+.fractionButtons button.active {
+  background: #e0eefc;
+  border-color: #1967b8;
+  color: #124f8b;
+}
+
+.draftToolMarksInfo {
+  display: block;
+  margin-top: 5px;
+  color: #57748d;
+}
+
+.fractionHeading .fractionDiameter {
+  display: flex;
+  align-items: center;
+  grid-gap: 5px;
+  margin: 0;
+  font-size: 9px;
+  color: #426783;
+}
+
+.fractionDiameter input {
+  width: 66px;
+  min-height: 25px !important;
+  margin: 0 !important;
+  padding: 3px 5px !important;
+  font:
+    11px Consolas,
+    monospace !important;
+}
+
+.fractionHeading {
+  grid-gap: 8px;
+}
+
+.fractionHeading .fractionDiameter {
+  white-space: nowrap;
+}
+
+.fractionHeading .fractionDiameter input {
+  width: 66px;
+  flex: 0 0 66px;
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 0;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 5px;
+}
+
+.iconButton svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+
+.sketchTools {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 5px;
+}
+
+.sketchTools .iconButton,
+.sketchActions .iconButton {
+  padding: 5px;
+  min-height: 38px;
+}
+
+.sketchTools .tool-machining {
+  color: #bb2438;
+}
+
+.sketchTools .tool-machining.active {
+  background: #ffedf0;
+  border-color: #d52b3e;
+  color: #b51e33;
+}
+
+.sketchTools .tool-erase {
+  color: #8e4250;
+}
+
+.sketchActions {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.sketchActions .auxErase {
+  grid-column: auto;
+  min-height: 38px;
+}
+
+.sketchEntryActions .iconButton {
+  min-height: 38px;
+}
+
+.sketchEntryActions .iconButton svg {
+  width: 25px;
+  height: 25px;
+}
+
+.draftHeading .iconButton {
+  min-width: 26px;
+  min-height: 24px;
+  padding: 2px;
+}
+
+.draftHeading .iconButton svg {
+  width: 19px;
+  height: 19px;
+}
+
+.draftFields > .iconButton {
+  min-width: 31px;
+  padding: 4px;
+}
+
+.draftFields > .iconButton svg {
+  width: 21px;
+  height: 21px;
+}
+
+.feedCodeReadout {
+  margin: 0 0 10px;
+  padding: 6px 7px;
+  border-left: 2px solid #52a8b9;
+  background: #f0f8fa;
+  color: #285b73;
+  font:
+    10px/1.5 Consolas,
+    monospace;
+  overflow-wrap: break-word;
+}
+
+#feedSlowReadout {
+  margin-bottom: 5px;
+  color: #356d84;
+}
+
+#compModeHelp {
+  margin-top: -4px;
+  margin-bottom: 9px;
+}
+
+.viewLegend .amber {
+  background: #ef8b2b;
+}
+
+#openWallHelp {
+  padding: 7px 8px;
+  margin-bottom: 8px;
+  background: #fff7e9;
+  border-left: 2px solid #ef8b2b;
+  color: #79511e;
+}
+
+.draftFractions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 4px;
+}
+
+.draftFractions button {
+  font-size: 10px;
+  min-height: 29px;
+  padding: 3px 4px;
+}
+
+.draftToolMarks > b {
+  display: block;
+  margin: 4px 0 6px;
+  font-size: 10px;
+  color: #356d84;
+}
+
+.geometryIssues {
+  padding: 7px 0;
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 6px;
+  color: #79511e;
+}
+
+.geometryIssues > div {
+  flex-basis: 100%;
+  font-size: 11px;
+}
+
+.geometryIssue {
+  padding: 6px 8px;
+  min-height: 30px;
+  white-space: normal;
+  text-align: left;
+  color: #754000;
+  background: #fff5d5;
+  border: 1px solid #d29c43;
+  border-radius: 5px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.geometryIssue:focus {
+  outline: 2px solid #157d90;
+  outline-offset: 1px;
+}

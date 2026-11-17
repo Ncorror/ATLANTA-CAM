@@ -1,0 +1,82 @@
+<dialog id="catalogDialog" aria-labelledby="catalogHeading">
+  <div class="modalHeader">
+    <h2 id="catalogHeading">База инструментов</h2>
+    <button
+      id="closeCatalog"
+      type="button"
+      class="square"
+      aria-label="Закрыть базу инструментов"
+      title="×"
+    >
+      ×
+    </button>
+  </div>
+  <div class="catalogBody">
+    <label>Инструмент<select id="catalogChoice"></select></label>
+    <div class="row">
+      <button id="newCatalogTool" type="button" class="outline" title="+ Добавить инструмент">
+        + Добавить инструмент</button
+      ><button id="resetCatalogForm" type="button" class="outline" title="Сбросить ввод">
+        Сбросить ввод</button
+      ><button id="deleteCatalogTool" type="button" class="outline" title="Удалить инструмент">
+        Удалить инструмент
+      </button>
+    </div>
+    <div class="row">
+      <label
+        >Номер в базе<input id="catalogNumber" type="number" min="1" max="9999" step="1" /></label
+      ><label>Тип<select id="catalogType"></select></label>
+    </div>
+    <label
+      >Имя в программе, латиницей<input
+        id="catalogName"
+        type="text"
+        maxlength="48"
+        autocomplete="off"
+        placeholder="Например, drill &lt;8.5"
+    /></label>
+    <div class="row">
+      <label>Диаметр, мм<input id="catalogDiameter" type="number" min=".001" step=".001" /></label
+      ><label
+        >Зубья / канавки<input id="catalogFlutes" type="number" min="1" max="100" step="1"
+      /></label>
+    </div>
+    <label
+      >Рабочая длина, мм<input id="catalogWorkingLength" type="number" min="0" step=".001"
+    /></label>
+    <details id="catalogCorrection">
+      <summary>Корректор инструмента D</summary>
+      <div class="row">
+        <label>Номер D<input id="catalogCorrector" type="number" min="1" max="99" step="1" /></label
+        ><label
+          >Значение D, 0,001 мм<input
+            id="catalogRadius"
+            type="number"
+            min="0"
+            max="999999"
+            step="1"
+            placeholder="Ø / 2 × 1000"
+        /></label>
+      </div>
+      <small
+        >4000 означает смещение центра на 4 мм. Ноль оставляет центр на линии. Для FANUC 3000C:
+        D01–D32.</small
+      >
+    </details>
+    <div class="row catalogSave">
+      <button id="saveCatalogTool" type="button" class="primary" title="Сохранить инструмент">
+        Сохранить инструмент
+      </button>
+    </div>
+    <div class="row">
+      <button id="importCatalog" type="button" class="outline" title="Импорт JSON">
+        Импорт JSON</button
+      ><button id="exportCatalog" type="button" class="outline" title="Экспорт JSON">
+        Экспорт JSON
+      </button>
+    </div>
+    <input id="catalogFile" type="file" accept=".json,application/json" hidden /><small
+      >Импорт объединяет инструменты по номерам.</small
+    ><small id="catalogStatus" role="status" aria-live="polite"></small>
+  </div>
+</dialog>

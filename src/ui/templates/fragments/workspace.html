@@ -1,0 +1,336 @@
+<div class="workspace">
+  <div class="viewHeader">
+    <div>
+      <h1 id="viewTitle">Чертёж детали</h1>
+      <p id="viewSubtitle"></p>
+    </div>
+    <div class="viewButtons">
+      <button
+        id="scaleDrawing"
+        class="dxfOnly outline small"
+        type="button"
+        title="Изменить реальные размеры чертежа"
+        aria-controls="scaleEditor"
+        aria-haspopup="dialog"
+      >
+        Масштаб</button
+      ><button
+        id="workPlaneButton"
+        class="chip"
+        type="button"
+        aria-haspopup="dialog"
+        aria-controls="workPlaneDialog"
+        title="Рабочая плоскость операции"
+      >
+        Плоскость XY</button
+      ><button id="topView" class="chip active" title="XY">XY</button
+      ><button id="isoView" class="chip" title="3D">3D</button
+      ><button id="fitView" class="chip" title="Вписать">Вписать</button
+      ><button
+        id="compSummary"
+        class="compSummary"
+        hidden
+        title="Значение корректора на станке"
+      ></button
+      ><button
+        id="toggleDetails"
+        class="detailsToggle"
+        aria-expanded="false"
+        aria-controls="workDetails"
+        title="Статистика, сообщения и текущий кадр"
+      >
+        <span id="detailsLabel">Сведения</span
+        ><span id="detailsBadge" class="detailsBadge" hidden></span
+        ><span class="detailsArrow" aria-hidden="true">▾</span></button
+      ><button id="toggleCode" class="chip" title="Код">Код</button>
+    </div>
+  </div>
+  <div class="canvasWrap" id="canvasWrap">
+    <canvas
+      id="canvas"
+      tabindex="0"
+      aria-label="Чертёж и траектория инструмента"
+      title="Выбор: рамка мышью; Shift + ЛКМ — сдвинуть вид; колесо — масштаб"
+    ></canvas>
+    <div id="canvasEmpty" class="canvasEmpty">
+      <span class="emptyCross">+</span><b>Чертёж детали</b
+      ><span>Выбери инструмент построения слева</span>
+    </div>
+    <div
+      id="draftPanel"
+      class="draftPanel"
+      role="group"
+      aria-label="Размеры от текущего узла"
+      hidden
+    >
+      <div class="draftHeading">
+        <b id="draftTitle">От текущего узла</b
+        ><button
+          id="draftFree"
+          type="button"
+          data-icon="mouse"
+          class="iconButton"
+          title="Задавать мышью"
+          aria-label="Снять числовые ограничения и задавать мышью"
+        >
+          <svg
+            viewbox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="6" y="2" width="12" height="20" rx="6"></rect>
+            <path d="M12 2v8M6 10h12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="draftFields">
+        <label id="draftLengthField"
+          ><span id="draftLengthLabel">Длина, мм</span
+          ><input
+            id="draftLength"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="по мыши" /></label
+        ><label id="draftRadiusField" hidden
+          ><span id="draftRadiusLabel">Радиус R, мм</span
+          ><input
+            id="draftRadius"
+            type="text"
+            maxlength="64"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="5" /></label
+        ><label id="draftCircleModeField" hidden
+          >Размер
+          <select id="draftCircleMode">
+            <option value="radius">Радиус</option>
+            <option value="diameter">Диаметр</option>
+          </select></label
+        ><label id="draftTurnField" hidden
+          >Поворот дуги, °<input
+            id="draftTurn"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="90" /></label
+        ><label id="draftAngleField"
+          ><span id="draftAngleLabel">Угол от X+, °</span
+          ><input
+            id="draftAngle"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="по мыши" /></label
+        ><label id="draftWidthField" hidden
+          >Ширина, мм<input
+            id="draftWidth"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="по мыши" /></label
+        ><label id="draftHeightField" hidden
+          >Высота, мм<input
+            id="draftHeight"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="по мыши" /></label
+        ><button
+          id="draftApply"
+          type="button"
+          data-icon="enter"
+          class="iconButton"
+          title="Построить элемент: Enter"
+          aria-label="Построить элемент: Enter"
+        >
+          <svg
+            viewbox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 4v9H4m5-5-5 5 5 5"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="draftToolMarks" class="draftToolMarks" hidden>
+        <b id="draftToolDiameter">Метки геометрии</b>
+        <div class="draftFractions">
+          <button type="button" id="draftToolQuarter1" title="¼ области">¼</button
+          ><button type="button" id="draftToolQuarter2" title="Центр ширины или высоты области">
+            ½ · центр</button
+          ><button type="button" id="draftToolQuarter3" title="¾ области">¾</button
+          ><button type="button" id="draftToolQuarter4" title="Противоположный край области">
+            Край
+          </button>
+        </div>
+      </div>
+      <small id="draftToolMarksInfo" hidden
+        >Привязки к геометрии: середины, центр и доли выбранной области. Числовой ввод имеет
+        приоритет.</small
+      ><output id="draftReadout"></output
+      ><small id="draftHelp">Число → Enter · Tab — следующее поле · Esc — закончить</small>
+    </div>
+    <div id="dimEditor" class="dimEditor" hidden>
+      <div class="dimEditorTitle">Изменить справочный размер</div>
+      <div class="dimEditorRow">
+        <input
+          id="dimEditorInput"
+          type="text"
+          inputmode="decimal"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="12.000"
+        /><span class="dimEditorUnit">мм</span>
+      </div>
+      <div class="dimEditorDirection">
+        <label title="Сдвинуть второй край"
+          ><input type="radio" name="dimDir" value="p2" checked /> В сторону точки 2</label
+        ><label title="Симметрично расширить оба края"
+          ><input type="radio" name="dimDir" value="center" /> Симметрично</label
+        ><label title="Сдвинуть первый край"
+          ><input type="radio" name="dimDir" value="p1" /> В сторону точки 1</label
+        >
+      </div>
+      <div class="dimEditorActions">
+        <button type="button" id="dimEditorApply" class="btn primary small" title="Применить">
+          Применить</button
+        ><button type="button" id="dimEditorDelete" class="btn small" title="Удалить этот размер">
+          Удалить</button
+        ><button type="button" id="dimEditorCancel" class="btn small" title="Отмена">Отмена</button>
+      </div>
+    </div>
+    <section
+      id="scaleEditor"
+      class="dimEditor scaleEditor"
+      role="dialog"
+      aria-labelledby="scaleTitle"
+      hidden
+    >
+      <h2 id="scaleTitle" class="dimEditorTitle">Масштаб чертежа</h2>
+      <p id="scaleSummary" role="status" aria-live="polite"></p>
+      <div class="scaleFields">
+        <label
+          >Способ<select id="scaleMode">
+            <option value="percent">В процентах</option>
+            <option value="width">По ширине, мм</option>
+          </select></label
+        ><label
+          ><span id="scaleValueLabel">Масштаб, %</span
+          ><input
+            id="scaleValue"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            value="50"
+        /></label>
+      </div>
+      <div class="dimEditorActions">
+        <button id="scaleCancel" type="button" class="btn small" title="Отмена">Отмена</button
+        ><button id="scaleApply" type="button" class="btn primary small" title="Применить">
+          Применить
+        </button>
+      </div>
+    </section>
+    <div class="canvasTag" id="canvasTag">ЧЕРТЁЖ · ММ</div>
+    <div
+      class="activeContourBadge"
+      id="activeContourBadge"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></div>
+    <div class="canvasPrompt" id="canvasPrompt" hidden></div>
+    <div class="gridBadge" id="gridBadge">100 мм / клетка</div>
+    <div class="coordinates" id="coordinates">X 0.000 · Y 0.000</div>
+    <div class="viewLegend">
+      <span class="previewLegend"><i class="grey"></i>DXF</span
+      ><span class="drawingLegend"><i class="grey"></i>План</span
+      ><span class="drawingLegend"><i class="machiningStroke"></i>В обработку</span
+      ><span class="previewLegend"><i class="cyan"></i><span id="pathLegend">Остриё</span></span
+      ><span class="previewLegend"><i class="amber"></i>Холостой ход</span
+      ><span><i class="red"></i>Ноль</span
+      ><span class="previewLegend"><i class="toolColour"></i>Инструмент</span
+      ><span
+        id="restLegend"
+        title="Расчётный остаток у стенки после всех проходов; заданный припуск не закрашивается"
+        hidden
+        ><i class="restColour"></i>Недорез</span
+      ><span id="selectionLegend"><i class="selectedColour"></i>Выбранный контур</span>
+    </div>
+  </div>
+  <div class="previewBar">
+    <div class="simulation">
+      <button id="resetSim" class="square" aria-label="В начало" title="В начало">|◂</button
+      ><button id="prevBlock" class="square" aria-label="Предыдущий кадр" title="Предыдущий кадр">
+        |◀</button
+      ><button id="play" class="square" aria-label="Воспроизвести" title="Воспроизвести">▶</button
+      ><button id="stepBlock" class="square" aria-label="Следующий кадр" title="Следующий кадр">
+        ▶|</button
+      ><button id="endSim" class="square" aria-label="В конец" title="В конец">▸|</button>
+      <div
+        id="timeline"
+        class="seekBar"
+        role="slider"
+        tabindex="0"
+        aria-label="Ход обработки"
+        aria-valuemin="0"
+        aria-valuemax="10000"
+        aria-valuenow="0"
+        aria-valuetext="0.0%"
+        aria-disabled="true"
+        title="Щёлкни или перетащи назад и вперёд. Стрелки — точная перемотка, Home/End — начало/конец."
+      >
+        <span class="seekTrack"></span><span class="seekFill"></span><span class="seekThumb"></span>
+      </div>
+      <output id="simProgress" for="timeline">0.0%</output
+      ><select id="playSpeed" aria-label="Скорость воспроизведения">
+        <option value="1">1×</option>
+        <option value="5" selected>5×</option>
+        <option value="20">20×</option>
+        <option value="100">100×</option></select
+      ><span id="simPosition" hidden>Z —</span>
+    </div>
+    <div class="dro" aria-label="Положение инструмента">
+      <div><span>X</span><b id="droX">0</b></div>
+      <div><span>Y</span><b id="droY">0</b></div>
+      <div><span>Z</span><b id="droZ">30000</b></div>
+      <small>КАК НА СТОЙКЕ<br />0,001 мм</small>
+    </div>
+  </div>
+  <section id="workDetails" class="workDetails" aria-label="Сведения об обработке" hidden>
+    <div class="detailsHeader">
+      <h2>Сведения об обработке</h2>
+      <button id="closeDetails" class="textBtn" aria-label="Свернуть сведения" title="Свернуть ▾">
+        Свернуть ▾
+      </button>
+    </div>
+    <div id="frameReadout" class="frameReadout">Рассчитай траекторию для покадрового просмотра</div>
+    <div class="stats">
+      <div>
+        <small id="passesCaption">КОНТУРЫ / ПРОХОДЫ</small><strong id="statPasses">—</strong>
+      </div>
+      <div><small id="timeCaption">РЕЗАНИЕ, ОЦЕНКА</small><strong id="statTime">—</strong></div>
+      <div><small id="sizeCaption">РАЗМЕР ЧЕРТЕЖА</small><strong id="statSize">—</strong></div>
+      <div><small>КАДРОВ</small><strong id="statBlocks">—</strong></div>
+    </div>
+    <div id="compReadout" class="compReadout" role="status" aria-live="polite" hidden></div>
+    <div class="messages" id="messages" aria-live="polite"></div>
+  </section>
+</div>

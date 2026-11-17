@@ -1,0 +1,11 @@
+/* Порядок важен: сохранён исходный каскад версии 3.87. */
+@import "./base.css";
+@import "./editor.css";
+@import "./simulation.css";
+@import "./workspace.css";
+@import "./drafting.css";
+@import "./entry-origin.css";
+@import "./operations.css";
+@import "./catalog-code.css";
+@import "./theme.css";
+@import "./extensions.css";

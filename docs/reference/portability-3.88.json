@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "archiveFiles": 164,
+  "freshNpmCi": true,
+  "fullTests": 126,
+  "relocatedPath": "fresh directory with spaces and Cyrillic characters",
+  "buildFromDifferentWorkingDirectory": true,
+  "identicalOfflineSha256": "12463a103d6da9ffb1292be47d0310ee98aad413e4f0ba1fd0004003bf30925b",
+  "developmentServer": true,
+  "developmentPageInitialized": true,
+  "watchRebuildAndRestore": true,
+  "original387Sha256": "07097e0e50bc470b6c3534140c60541cc3b170f91dc75fe15b9017c6c141e586"
+}

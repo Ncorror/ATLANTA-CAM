@@ -1,0 +1,417 @@
+/* Заход, выход и установка начала координат. Порядок каскада: см. index.css. */
+.entryControls {
+  margin: 6px 0 8px;
+  padding: 6px;
+  border: 1px solid #bcd8de;
+  border-radius: 6px;
+  background: #f2f9fa;
+}
+
+.entryControls > small {
+  display: block;
+  margin: 3px 0 5px;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+.entryControls label {
+  margin-bottom: 4px;
+}
+
+.entryControls input[type="number"] {
+  min-height: 30px;
+}
+
+.entryControls .check {
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.geometryIssue.entryIssue {
+  background: #ffe8ed;
+  border-color: #d24b61;
+  color: #991b32;
+}
+
+.sketchTools .tool-ruler {
+  flex-direction: column;
+  grid-gap: 1px;
+}
+
+.rulerLabel {
+  font-size: 8px;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.entrySection {
+  margin: 7px 0;
+  padding: 6px 7px;
+  border: 1px solid #c8dce4;
+  border-radius: 6px;
+  background: #f5fafc;
+}
+
+.entrySectionTitle {
+  font:
+    600 10px -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    sans-serif;
+  color: #20546c;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.entryPointActions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4px;
+  margin: 3px 0 5px;
+}
+
+.entryPointActions button {
+  min-height: 30px;
+  font-size: 10px;
+  padding: 3px 2px;
+  white-space: normal;
+  text-align: center;
+}
+
+.entryPointActions button.active {
+  background: #d5eef5;
+  border-color: #147385;
+  color: #074d5b;
+  font-weight: bold;
+  box-shadow: inset 0 0 0 1px #147385;
+}
+
+.entryActionsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4px;
+  margin: 3px 0 1px;
+}
+
+.entryActionsRow button {
+  min-height: 26px;
+  font-size: 9.5px;
+  padding: 2px 2px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.entryCoordsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  grid-gap: 5px;
+  align-items: flex-end;
+  margin-bottom: 4px;
+}
+
+.entryCoordsRow label {
+  margin-bottom: 0;
+  font-size: 10px;
+  color: #355f75;
+}
+
+.entryCoordsRow input {
+  min-height: 28px;
+  padding: 3px 6px;
+  font:
+    12px Consolas,
+    monospace;
+}
+
+.entryCoordsRow button {
+  min-height: 28px;
+  padding: 3px 10px;
+  font-size: 11px;
+}
+
+.entryControls #entryRule {
+  color: #496576;
+  line-height: 1.35;
+  margin-top: 6px;
+}
+
+.originPanel {
+  margin: 12px 0;
+  padding: 10px;
+  border: 1px solid #c7d8e2;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #f8fbfd, #edf4f7);
+}
+
+.originPanel .zeroHeading {
+  margin: 0 0 6px;
+  grid-gap: 8px;
+}
+
+.originPanel h2 {
+  font-size: 12px;
+  color: #335c73;
+}
+
+.originPanel .originIconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 27px;
+  width: 27px;
+  height: 27px;
+  min-height: 27px;
+  padding: 4px;
+  border: 1px solid #bbced9;
+  border-radius: 5px;
+  background: #fff;
+  color: #356d87;
+}
+
+.originIconButton svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.originPanel .originIconButton:hover {
+  background: #e5f0f5;
+  border-color: #7fa7ba;
+}
+
+.originPanel #pickOrigin.active {
+  background: #d6edf2;
+  border-color: #398d9f;
+  color: #126e82;
+}
+
+.originPlacement {
+  display: grid;
+  grid-template-columns: minmax(122px, 1.45fr) minmax(76px, 1fr);
+  grid-gap: 8px;
+  align-items: start;
+}
+
+.originAnchorBlock {
+  min-width: 0;
+}
+
+.originAnchorDiagram {
+  position: relative;
+  width: 124px;
+  height: 126px;
+  margin: 0 auto;
+  padding: 17px 6px 19px;
+}
+
+.originAnchorGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 30px);
+  width: 112px;
+  height: 90px;
+}
+
+.originAnchorGrid::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 17px;
+  bottom: 14px;
+  left: 17px;
+  border: 1.3px solid #a5becd;
+  background: linear-gradient(145deg, #e4eef3, #f7fafc);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.originPanel .originAnchorButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+}
+
+.originPanel .originAnchorButton:hover {
+  background: #e0edf3;
+  border-color: #b1cad7;
+}
+
+.originPanel .originAnchorButton.active,
+.originPanel .originAnchorButton[aria-pressed="true"] {
+  background: #dceef1;
+  border-color: #7eb4c0;
+}
+
+.originDot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid #66869a;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.originAnchorButton.active .originDot,
+.originAnchorButton[aria-pressed="true"] .originDot {
+  width: 9px;
+  height: 9px;
+  background: #167d8e;
+  border-color: #167d8e;
+}
+
+.originAxisY,
+.originAxisX {
+  position: absolute;
+  font:
+    10px Consolas,
+    monospace;
+  color: #5b7c90;
+  pointer-events: none;
+}
+
+.originAxisY {
+  left: 10px;
+  top: 1px;
+}
+
+.originAxisX {
+  right: 1px;
+  bottom: 1px;
+}
+
+.originAnchorName {
+  display: block;
+  min-height: 27px;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #426b81;
+}
+
+.originOffsetGroup {
+  min-width: 0;
+  padding-left: 6px;
+  border-left: 1px solid #d5e1e8;
+}
+
+.originOffsetHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 3px;
+  margin: 2px 0 4px;
+}
+
+.originPanel .originOffsetHeading h3 {
+  font-size: 10px;
+  line-height: 1.35;
+  color: #5a7588;
+  font-weight: 600;
+}
+
+.originPanel .originOffsetHeading .originIconButton {
+  flex-basis: 24px;
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  padding: 3px;
+}
+
+.originOffsetGroup label {
+  font-size: 10px;
+  margin-bottom: 5px;
+  color: #466e83;
+}
+
+.originPanel .originOffsetGroup input {
+  min-height: 30px;
+  padding: 5px 6px;
+  margin-top: 1px;
+  font:
+    12px Consolas,
+    monospace;
+  background: #fff;
+}
+
+.originAlternative {
+  margin-top: 6px !important;
+  border-top: 1px solid #d6e3eb;
+}
+
+.originAlternative summary {
+  padding: 7px 0;
+  font-size: 10px;
+  color: #58798d;
+}
+
+.originAlternative label {
+  font-size: 10px;
+  margin-bottom: 6px;
+}
+
+.originAlternative select {
+  min-height: 30px;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.originPanel #originFields {
+  grid-gap: 6px;
+}
+
+.originPanel #originFields input {
+  min-height: 30px;
+  padding: 5px;
+  font:
+    11px Consolas,
+    monospace;
+}
+
+.originPanel .originReadout {
+  display: block;
+  margin: 5px 0 0;
+  padding: 6px 7px;
+  border: 1px solid #d5e4ec;
+  border-radius: 5px;
+  background: #fff;
+  font:
+    10px/1.6 Consolas,
+    monospace;
+  color: #2d607a;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1150px) {
+  .originPanel {
+    padding: 8px;
+  }
+  .originPlacement {
+    grid-template-columns: minmax(116px, 1.5fr) minmax(69px, 1fr);
+    grid-gap: 5px;
+  }
+  .originAnchorDiagram {
+    width: 118px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  .originOffsetGroup {
+    padding-left: 5px;
+  }
+}

@@ -1,0 +1,403 @@
+/* Настройки операций и компактный редактор. Порядок каскада: см. index.css. */
+.settings {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.settingsNav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 4px;
+  flex: none;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--line);
+  background: #edf4f7;
+}
+
+.settingsNav button {
+  padding: 3px 4px;
+  min-height: 30px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #345b70;
+}
+
+.settingsBody {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b3c4d2 transparent;
+  scroll-padding: 6px 0;
+}
+
+.settings .settingsBody section {
+  padding: 10px 12px;
+}
+
+.settingsBody .sectionTitle {
+  margin-bottom: 5px;
+  grid-gap: 6px;
+}
+
+.settingsBody h2 {
+  font-size: 12px;
+}
+
+.settingsBody label {
+  margin: 0 0 6px;
+  color: #3e5a70;
+}
+
+.settingsBody label.check {
+  align-items: center;
+  grid-gap: 5px;
+  margin: 5px 0;
+}
+
+.settingsBody label.check input {
+  margin: 0;
+  flex: none;
+}
+
+.settingsBody input:not([type="checkbox"]):not([type="range"]),
+.settingsBody select {
+  min-height: 30px;
+  margin-top: 2px;
+  padding: 4px 6px;
+  background: #fff;
+}
+
+.settingsBody select {
+  min-width: 0;
+}
+
+.settingsBody summary {
+  padding: 7px 0;
+  font-weight: 600;
+  color: #3d6378;
+}
+
+.settingsBody summary:focus-visible {
+  outline: 2px solid #2998aa;
+  outline-offset: 2px;
+}
+
+.settingsBody .row {
+  grid-gap: 7px;
+}
+
+.settingsBody .outline {
+  background: #fff;
+}
+
+.settingsBody button.outline:hover:not(:disabled) {
+  background: #eaf3f5;
+}
+
+.settings .exportPanel {
+  position: static;
+  flex: none;
+  padding: 7px 10px 9px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.exportPanel > .full {
+  margin: 0;
+  min-height: 33px;
+}
+
+.exportPanel > .row {
+  grid-gap: 6px;
+  margin: 5px 0 0;
+}
+
+.exportPanel > .row button {
+  min-height: 29px;
+  padding: 4px 6px;
+}
+
+.operationPanel {
+  background: #f1f6f9;
+  border-bottom: 1px solid var(--line);
+}
+
+.operationChoiceRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  grid-gap: 5px;
+}
+
+.settingsBody .operationChoiceRow select {
+  margin: 0;
+}
+
+.operationChoiceRow button {
+  min-height: 30px;
+  padding: 4px 7px;
+  font-size: 11px;
+}
+
+.operationOrder {
+  display: grid;
+  grid-template-columns: 1fr 1fr 26px 26px 26px;
+  grid-gap: 4px;
+  margin-top: 5px;
+}
+
+.operationOrder button {
+  min-width: 0;
+  min-height: 27px;
+  padding: 3px 1px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.operationOrder #removeOperation {
+  font-size: 14px;
+  color: #8c3e4b;
+}
+
+.operationSetup {
+  border-bottom: 1px solid var(--line);
+}
+
+.settings .settingsBody .operationSetup {
+  padding-block: 7px;
+}
+
+.settings .settingsBody .mainSettings {
+  padding-top: 7px;
+}
+
+.operationToolRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 32px;
+  align-items: flex-end;
+  grid-gap: 6px;
+}
+
+.operationToolRow label {
+  margin-bottom: 0;
+}
+
+.settingsBody .operationToolRow input[type="color"] {
+  height: 30px;
+  min-height: 30px;
+  width: 100%;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.operationCommands {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  grid-gap: 5px;
+  margin-top: 6px;
+}
+
+.operationCommands .operationMark {
+  min-height: 30px;
+  padding: 4px 5px;
+  border-color: var(--mark-color, #d52b3e);
+  color: var(--mark-color, #d52b3e);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.operationCommands .drawingEntry {
+  display: inline-flex;
+  align-items: center;
+  grid-gap: 3px;
+  min-height: 30px;
+  padding: 3px 5px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.drawingEntry svg {
+  width: 16px;
+  height: 16px;
+}
+
+.feedSettings {
+  align-items: center;
+}
+
+.feedSettings .check {
+  flex: 0 0 76px;
+}
+
+.mainSettings .feedCodeReadout {
+  margin: 1px 0 7px;
+  padding: 4px 6px;
+}
+
+.mainSettings .cutSideField {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  grid-gap: 6px;
+}
+
+.mainSettings .entryControls {
+  margin: 6px 0;
+  padding: 6px;
+}
+
+.entryControls > small {
+  margin: 2px 0 3px;
+}
+
+#drillFields > small {
+  color: #8b6326;
+}
+
+.settingsBody .originSection {
+  border-top: 1px solid var(--line);
+}
+
+.originSection .originPanel {
+  margin: 0;
+}
+
+.settingsBody .advanced {
+  margin: 0;
+  padding: 0 12px;
+}
+
+.settings .settingsBody .advanced > section {
+  padding: 3px 0 10px;
+}
+
+.advanced h3 {
+  margin: 0 0 5px;
+  font-size: 11px;
+  color: #345d71;
+}
+
+.codeSettings {
+  margin-bottom: 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--line);
+}
+
+.codeSettings .row {
+  align-items: center;
+}
+
+.ncOnly h2 {
+  margin-bottom: 7px;
+}
+
+.sketchPanel {
+  background: #f5f9fb;
+}
+
+.sketchPanel .sketchEntryActions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 4px;
+  margin-bottom: 6px;
+}
+
+.sketchPanel .sketchTools {
+  margin-top: 0;
+  grid-gap: 4px;
+}
+
+.sketchPanel .sketchActions {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 4px;
+  margin: 4px 0 6px;
+}
+
+.sketchPanel .iconButton {
+  min-width: 0;
+  min-height: 32px;
+  padding: 3px;
+}
+
+.sketchPanel .iconButton svg {
+  width: 21px;
+  height: 21px;
+}
+
+.sketchPanel .constructionMode {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.sketchPanel .sketchSnap {
+  margin: 3px 0 0;
+}
+
+.sketchPanel .sketchSnap > label {
+  margin-bottom: 3px;
+}
+
+.sketchPanel .circleModeField {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-gap: 6px;
+}
+
+.sketchPanel .sketchHint {
+  margin: 4px 0;
+  padding: 0;
+  color: #4a667c;
+  line-height: 1.35;
+}
+
+.sketchPanel .sketchHint:empty {
+  display: none;
+}
+
+.sketchPanel details {
+  margin: 5px 0 0;
+}
+
+.draftFields select {
+  min-height: 30px;
+  margin-top: 2px;
+  padding: 4px;
+  font-size: 11px;
+}
+
+.drawing .operationCommands {
+  grid-template-columns: 1fr;
+}
+
+.viewLegend .drawingLegend,
+.drawing .viewLegend .previewLegend {
+  display: none;
+}
+
+.drawing .viewLegend .drawingLegend {
+  display: flex;
+}
+
+.viewLegend .machiningStroke {
+  height: 4px;
+  background: #d52b3e;
+}
+
+@media (max-width: 620px) {
+  .settings,
+  .settingsBody {
+    overflow: visible;
+  }
+  .drawing .sketchPanel {
+    max-height: none;
+    overflow: visible;
+  }
+}

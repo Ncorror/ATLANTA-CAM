@@ -1,0 +1,50 @@
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">A</span>
+    <div>
+      <strong>ATLANTA <b>КОНТУР</b></strong
+      ><small>{{APP_VERSION}} · CAM</small>
+    </div>
+  </div>
+  <div class="filename">
+    <div id="fileName">Открой DXF</div>
+    <small
+      id="autosaveStatus"
+      role="status"
+      aria-live="polite"
+      style="display: block; font-size: 10px; color: #bdd7e6; margin-top: 3px"
+      >Автосохранение в браузере</small
+    >
+  </div>
+  <div class="topActions">
+    <button
+      id="sketchNew"
+      type="button"
+      class="ghost"
+      title="Новый чертёж. Предыдущий можно сохранить в JSON."
+      aria-label="Новый чистый эскиз"
+    >
+      + Чертёж</button
+    ><button
+      id="loadFile"
+      class="ghost"
+      title="Проект JSON, чертёж DXF или готовая программа NC / TXT"
+    >
+      Открыть</button
+    ><button
+      id="chooseMachine"
+      class="machineSwitch"
+      title="Выбрать модель станка"
+      aria-label="Выбрать модель станка"
+    >
+      FANUC 3000C ▾</button
+    ><button
+      id="saveProject"
+      class="ghost"
+      title="Геометрия, инструменты, операции и рабочий ноль — в одном проекте"
+    >
+      Сохранить</button
+    ><button id="helpBtn" class="square" aria-label="Справка" title="?">?</button>
+  </div>
+  <input id="fileInput" type="file" accept=".dxf,.txt,.nc,.tap,.cnc,.json" hidden />
+</header>

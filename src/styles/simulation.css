@@ -1,0 +1,127 @@
+/* Коррекция и панель симуляции. Порядок каскада: см. index.css. */
+.compReadout {
+  margin: 8px 14px 0;
+  padding: 10px 12px;
+  border: 1px solid #93bcc4;
+  background: #edf8fa;
+  color: #195b68;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.compReadout.zeroD {
+  border-color: #d69f64;
+  background: #fff3df;
+  color: #7d4a13;
+}
+
+.viewLegend i.restColour {
+  background: #c82b78;
+}
+
+.compReadout[hidden] {
+  display: none;
+}
+
+.simulation input[type="range"] {
+  cursor: ew-resize;
+  min-width: 65px;
+}
+
+.simulation output {
+  font:
+    10px Consolas,
+    monospace;
+  color: #407d8e;
+  min-width: 39px;
+  text-align: right;
+}
+
+.simulation .square {
+  flex-shrink: 0;
+  padding: 3px 5px;
+  min-width: 29px;
+}
+
+@media (max-width: 620px) {
+  .simulation {
+    flex-wrap: wrap;
+  }
+  .simulation input[type="range"] {
+    min-width: 100px;
+  }
+  .simulation output {
+    font-size: 9px;
+  }
+}
+
+.seekBar {
+  flex: 1;
+  min-width: 65px;
+  height: 32px;
+  position: relative;
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+  -moz-user-select: none;
+  margin: 0 8px;
+}
+
+.seekBar[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.seekBar:focus {
+  outline: 2px solid #2998aa;
+  outline-offset: 3px;
+}
+
+.simulation .seekBar span {
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  min-width: 0;
+}
+
+.seekTrack,
+.seekFill {
+  top: 14px;
+  height: 5px;
+  border-radius: 3px;
+}
+
+.seekTrack {
+  left: 0;
+  right: 0;
+  background: #cddce4;
+}
+
+.seekFill {
+  left: 0;
+  width: 0;
+  background: #16899b;
+}
+
+.seekThumb {
+  top: 7px;
+  left: 0;
+  width: 19px;
+  height: 19px;
+  margin-left: -9px;
+  background: #167d8e;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #72aab5;
+}
+
+.seekBar:hover .seekThumb,
+.seekBar:focus .seekThumb {
+  background: #0b697a;
+}
+
+.simulation .seekBar {
+  overflow: visible;
+}

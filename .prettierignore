@@ -1,0 +1,8 @@
+node_modules
+dist
+test-results
+reports
+releases
+package-lock.json
+tests/fixtures
+docs/reference
