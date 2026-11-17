@@ -19,25 +19,37 @@ export async function verify() {
   const steps = [
     ["format", [resolve("node_modules/prettier/bin/prettier.cjs"), "--check", "."]],
     ["architecture", [resolve("scripts/check.mjs")]],
-    ["unit", ["--test-reporter=tap", ...(await testArguments("unit"))]],
+    ["unit", await testArguments("unit")],
     ["build", [resolve("scripts/build.mjs")]],
-    ["browser", ["--test-reporter=tap", ...(await testArguments("browser"))]],
+    ["browser", await testArguments("browser")],
   ];
   try {
     for (const [name, args] of steps) {
       console.log(`Checking ${name}…`);
-      const result = spawnSync(process.execPath, args, {
+      const log = resolve("reports", name + ".txt");
+      const isTest = name === "unit" || name === "browser";
+      const reporters = isTest
+        ? [
+            "--test-reporter=dot",
+            "--test-reporter-destination=stdout",
+            "--test-reporter=tap",
+            `--test-reporter-destination=${log}`,
+          ]
+        : [];
+      if (isTest) await fs.writeFile(log, "");
+      const result = spawnSync(process.execPath, [...reporters, ...args], {
         cwd: root,
         encoding: "utf8",
         timeout: 180000,
         maxBuffer: 16 * 1024 * 1024,
       });
       const output = (result.stdout || "") + (result.stderr || "");
-      await fs.writeFile(resolve("reports", name + ".txt"), output);
+      const tap = isTest ? await fs.readFile(log, "utf8") : "";
+      await fs.writeFile(log, tap ? tap + (result.stderr || "") : output);
       const entry = { name, passed: result.status === 0 };
-      if (["unit", "browser"].includes(name)) {
-        entry.tests = Number(output.match(/^# tests (\d+)/m)?.[1] || 0);
-        entry.failures = Number(output.match(/^# fail (\d+)/m)?.[1] || 0);
+      if (isTest) {
+        entry.tests = Number(tap.match(/^# tests (\d+)/m)?.[1] || 0);
+        entry.failures = Number(tap.match(/^# fail (\d+)/m)?.[1] || 0);
       }
       report.checks.push(entry);
       if (result.error || result.status !== 0) {
