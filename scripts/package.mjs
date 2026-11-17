@@ -7,7 +7,7 @@ import { root, resolve, version, filesUnder } from "./paths.mjs";
 const args = process.argv.slice(2);
 if (args.length && (args[0] !== "--output" || args.length !== 2))
   throw new Error("Usage: npm run package -- [--output path.zip]");
-await verify();
+await verify({ installBrowser: process.env.ATLANTA_INSTALL_BROWSER === "1" });
 const output = args.length
   ? path.resolve(process.cwd(), args[1])
   : resolve("releases", `ATLANTA-CAM-${version}.zip`);

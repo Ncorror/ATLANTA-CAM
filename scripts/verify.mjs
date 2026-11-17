@@ -5,7 +5,7 @@ import { testArguments } from "./test.mjs";
 import { resolve, root, version } from "./paths.mjs";
 
 /** Complete, repeatable release verification; does not require npm on PATH. */
-export async function verify() {
+export async function verify({ installBrowser = false } = {}) {
   await fs.mkdir(resolve("reports"), { recursive: true });
   const report = {
     version,
@@ -19,15 +19,27 @@ export async function verify() {
   const steps = [
     ["format", [resolve("node_modules/prettier/bin/prettier.cjs"), "--check", "."]],
     ["architecture", [resolve("scripts/check.mjs")]],
-    ["unit", await testArguments("unit")],
+    ["unit"],
     ["build", [resolve("scripts/build.mjs")]],
-    ["browser", await testArguments("browser")],
   ];
+  if (installBrowser) {
+    steps.push([
+      "browser-install",
+      [
+        resolve("node_modules/playwright/cli.js"),
+        "install",
+        "--with-deps",
+        "--only-shell",
+        "chromium",
+      ],
+    ]);
+  }
+  steps.push(["browser"]);
   try {
-    for (const [name, args] of steps) {
+    for (const [name, command] of steps) {
       console.log(`Checking ${name}…`);
       const log = resolve("reports", name + ".txt");
-      const isTest = name === "unit" || name === "browser";
+      const isTest = command === undefined;
       const reporters = isTest
         ? [
             "--test-reporter=dot",
@@ -36,25 +48,32 @@ export async function verify() {
             `--test-reporter-destination=${log}`,
           ]
         : [];
-      if (isTest) await fs.writeFile(log, "");
-      const result = spawnSync(process.execPath, [...reporters, ...args], {
-        cwd: root,
-        encoding: "utf8",
-        timeout: 180000,
-        maxBuffer: 16 * 1024 * 1024,
-      });
-      const output = (result.stdout || "") + (result.stderr || "");
-      const tap = isTest ? await fs.readFile(log, "utf8") : "";
-      await fs.writeFile(log, tap ? tap + (result.stderr || "") : output);
-      const entry = { name, passed: result.status === 0 };
-      if (isTest) {
-        entry.tests = Number(tap.match(/^# tests (\d+)/m)?.[1] || 0);
-        entry.failures = Number(tap.match(/^# fail (\d+)/m)?.[1] || 0);
-      }
+      const startedAt = performance.now();
+      const entry = { name, passed: false };
       report.checks.push(entry);
-      if (result.error || result.status !== 0) {
-        console.error(output);
-        throw result.error || new Error(`${name} failed`);
+      try {
+        if (isTest) await fs.writeFile(log, "");
+        const args = command ?? (await testArguments(name));
+        const result = spawnSync(process.execPath, [...reporters, ...args], {
+          cwd: root,
+          encoding: "utf8",
+          timeout: name === "browser-install" ? 360000 : 180000,
+          maxBuffer: 16 * 1024 * 1024,
+        });
+        const output = (result.stdout || "") + (result.stderr || "");
+        const tap = isTest ? await fs.readFile(log, "utf8") : "";
+        await fs.writeFile(log, tap ? tap + (result.stderr || "") : output);
+        if (isTest) {
+          entry.tests = Number(tap.match(/^# tests (\d+)/m)?.[1] || 0);
+          entry.failures = Number(tap.match(/^# fail (\d+)/m)?.[1] || 0);
+        }
+        if (result.error || result.status !== 0) {
+          console.error(output);
+          throw result.error || new Error(`${name} failed`);
+        }
+        entry.passed = true;
+      } finally {
+        entry.durationMs = Math.round(performance.now() - startedAt);
       }
     }
     report.artifact = JSON.parse(await fs.readFile(resolve("dist/manifest.json"), "utf8"));

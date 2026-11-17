@@ -27,10 +27,11 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npx --no-install playwright install --with-deps --only-shell chromium
 
       - name: Verify and package
         id: package
+        env:
+          ATLANTA_INSTALL_BROWSER: "1"
         run: npm run package
 
       - name: Generate formatting patch
