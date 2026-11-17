@@ -8,7 +8,11 @@ export async function testArguments(suite) {
     file.endsWith(".test.js"),
   );
   if (!files.length) throw new Error(`No tests found in ${suite}`);
-  return ["--test", ...(suite === "browser" ? ["--test-concurrency=1"] : []), ...files];
+  const options =
+    suite === "browser"
+      ? [`--test-concurrency=${process.env.ATLANTA_BROWSER_CONCURRENCY ?? "1"}`]
+      : [];
+  return ["--test", ...options, ...files];
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = spawnSync(process.execPath, await testArguments(process.argv[2]), {
