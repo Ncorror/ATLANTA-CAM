@@ -77,3 +77,20 @@ jobs:
             dist/worker.js
           if-no-files-found: error
           retention-days: 30
+
+  kotlin-core:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-java@0f481fcb613427c0f801b606911222b5b6f3083a # v5.5.0
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Build and test Kotlin core
+        working-directory: android
+        run: ./gradlew --no-daemon build
