@@ -1,4 +1,5 @@
 plugins {
+  `java-library`
   kotlin("jvm") version "2.2.21"
 }
 
@@ -19,9 +20,14 @@ kotlin {
 }
 
 dependencies {
+  api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
   testImplementation(platform("org.junit:junit-bom:5.13.4"))
   testImplementation(kotlin("test-junit5"))
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+sourceSets.test {
+  resources.srcDir("../tests/fixtures")
 }
 
 tasks.test {

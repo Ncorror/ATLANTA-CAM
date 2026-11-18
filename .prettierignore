@@ -3,6 +3,7 @@ dist
 test-results
 reports
 releases
+android/build/
 package-lock.json
 tests/fixtures
 docs/reference
