@@ -5,8 +5,6 @@ import java.math.RoundingMode
 import kotlin.math.abs
 import kotlin.math.roundToLong
 
-enum class WorkPlane { XY, ZX, YZ }
-
 /** Physical Z in millimetres, quantized to the coordinate written in the FANUC block. */
 data class ZReferenceFrame(val z: Double, val command: String, val comment: String? = null)
 
