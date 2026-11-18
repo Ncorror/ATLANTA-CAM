@@ -4,6 +4,7 @@ test-results
 reports
 releases
 android/build/
+android/app/build/
 package-lock.json
 tests/fixtures
 docs/reference

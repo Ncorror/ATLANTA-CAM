@@ -1,3 +1,7 @@
 /.gradle/
 /.kotlin/
 /build/
+/app/.gradle/
+/app/.kotlin/
+/app/build/
+/app/local.properties

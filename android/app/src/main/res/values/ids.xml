@@ -1,0 +1,8 @@
+<resources>
+  <item name="open_project" type="id" />
+  <item name="project_name" type="id" />
+  <item name="operation_picker" type="id" />
+  <item name="scene_summary" type="id" />
+  <item name="sketch_preview" type="id" />
+  <item name="status_message" type="id" />
+</resources>

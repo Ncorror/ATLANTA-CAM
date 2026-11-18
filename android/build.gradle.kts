@@ -3,6 +3,8 @@ plugins {
   kotlin("jvm") version "2.2.21"
 }
 
+group = "cam.atlanta"
+
 java {
   sourceCompatibility = JavaVersion.VERSION_17
   targetCompatibility = JavaVersion.VERSION_17
