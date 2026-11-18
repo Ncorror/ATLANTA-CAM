@@ -108,11 +108,13 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      - uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
+        with:
+          packages: "platform-tools platforms;android-35 build-tools;35.0.0"
+
       - name: Build debug APK and instrumented tests
         working-directory: android
-        run: |
-          sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
-          ./gradlew -p app --no-daemon :assembleDebug :assembleDebugAndroidTest
+        run: ./gradlew -p app --no-daemon :assembleDebug :assembleDebugAndroidTest
 
       - name: Enable KVM for Android emulator
         run: |
