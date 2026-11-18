@@ -16,11 +16,15 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
+import cam.atlanta.core.dxf.DxfDrawing
+import cam.atlanta.core.dxf.DxfOptions
+import cam.atlanta.core.dxf.readDxf
 import cam.atlanta.core.project.OperationKind
 import cam.atlanta.core.project.ProjectOperation
 import cam.atlanta.core.project.ProjectV5
 import cam.atlanta.core.project.ProjectV5Codec
 import cam.atlanta.core.project.SketchScene
+import cam.atlanta.core.project.embeddedDxf
 import cam.atlanta.core.project.sketchScene
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
@@ -36,14 +40,14 @@ class MainActivity : Activity() {
   private lateinit var summary: TextView
   private lateinit var status: TextView
   private lateinit var preview: SketchPreview
-  private var opened: OpenedProject? = null
+  private var opened: OpenedDocument? = null
   private var selectedOperation: ProjectOperation? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(createScreen())
     savedInstanceState?.getString(STATE_URI)?.let { uri ->
-      openProject(Uri.parse(uri), savedInstanceState.getString(STATE_OPERATION))
+      openDocument(Uri.parse(uri), savedInstanceState.getString(STATE_OPERATION))
     }
   }
 
@@ -73,22 +77,45 @@ class MainActivity : Activity() {
     super.onActivityResult(requestCode, resultCode, data)
     if (requestCode != OPEN_PROJECT || resultCode != RESULT_OK) return
     val uri = data?.data ?: return
-    openProject(uri)
+    openDocument(uri)
   }
 
-  private fun openProject(uri: Uri, operationId: String? = null) {
-    compute("Открываю проект…", "Не удалось открыть проект.", {
-      val project = ProjectV5Codec.decode(readProjectText(uri))
-      val operation = project.operations.firstOrNull { it.id == operationId } ?: project.activeOperation
-      val scene = project.sketchScene(operation)
-      Triple(OpenedProject(uri, displayName(uri), project), operation, scene)
-    }) { (document, operation, scene) ->
+  private fun openDocument(uri: Uri, operationId: String? = null) {
+    compute("Открываю файл…", "Не удалось открыть проект.", { loadDocument(uri, operationId) }) { (document, operation, scene) ->
       opened = document
       selectedOperation = operation
       projectName.text = document.name
-      updateOperationPicker(document.project, operation)
-      showScene(scene)
+      if (document.project != null && operation != null) {
+        updateOperationPicker(document.project, operation)
+      } else {
+        operationPicker.onItemSelectedListener = null
+        operationPicker.adapter = null
+        operationPicker.visibility = View.GONE
+      }
+      val drawing = document.drawing
+      if (drawing != null) showDxf(drawing, document.project != null) else showScene(scene)
     }
+  }
+
+  private fun loadDocument(uri: Uri, operationId: String?): LoadedDocument {
+    val name = displayName(uri)
+    val text = readDocumentText(uri)
+    if (name.endsWith(".dxf", ignoreCase = true) ||
+      (!name.endsWith(".json", ignoreCase = true) && looksLikeDxf(text))) {
+      val drawing = readDxf(text, DxfOptions(tolerance = 0.02))
+      return LoadedDocument(OpenedDocument(uri, name, drawing = drawing))
+    }
+
+    val project = ProjectV5Codec.decode(text)
+    val operation = project.operations.firstOrNull { it.id == operationId } ?: project.activeOperation
+    val scene = project.sketchScene(operation)
+    val drawing = if (scene == null) project.embeddedDxf() else null
+    return LoadedDocument(OpenedDocument(uri, name, project, drawing), operation, scene)
+  }
+
+  private fun looksLikeDxf(text: String): Boolean {
+    val content = text.removePrefix("\uFEFF")
+    return content.startsWith("AutoCAD Binary DXF") || DXF_SECTION.containsMatchIn(content)
   }
 
   private fun updateOperationPicker(project: ProjectV5, operation: ProjectOperation) {
@@ -110,12 +137,29 @@ class MainActivity : Activity() {
 
       override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val next = project.operations.getOrNull(position) ?: return
-        if (next == selectedOperation || opened?.project != project) return
+        val document = opened ?: return
+        if (next == selectedOperation || document.project != project) return
+        if (document.drawing != null) {
+          selectedOperation = next
+          return
+        }
         compute("Собираю контуры…", "Не удалось выбрать операцию.", { project.sketchScene(next) }) { scene ->
           selectedOperation = next
           showScene(scene)
         }
       }
+    }
+  }
+
+  private fun showDxf(drawing: DxfDrawing, inProject: Boolean) {
+    preview.showDxf(drawing.plan)
+    summary.visibility = View.VISIBLE
+    val layers = drawing.plan.contours.map { it.layer }.toSet().size
+    summary.text = "Контуры чертежа: ${drawing.plan.contours.size} · Слои: $layers"
+    status.text = when {
+      drawing.plan.warnings.isNotEmpty() -> drawing.plan.warnings.joinToString("\n")
+      inProject -> "Проект открыт"
+      else -> "DXF открыт"
     }
   }
 
@@ -154,7 +198,7 @@ class MainActivity : Activity() {
     }
   }
 
-  private fun readProjectText(uri: Uri): String {
+  private fun readDocumentText(uri: Uri): String {
     val input = checkNotNull(contentResolver.openInputStream(uri)) { "Файл недоступен." }
     val output = ByteArrayOutputStream()
     val buffer = ByteArray(8192)
@@ -200,7 +244,7 @@ class MainActivity : Activity() {
     screen.addView(text("ATLANTA CAM", 24, bold = true))
     openButton = Button(this).apply {
       id = R.id.open_project
-      text = "Открыть проект"
+      text = "Открыть файл"
       isAllCaps = false
       setTextColor(Color.WHITE)
       backgroundTintList = ColorStateList.valueOf(Color.rgb(22, 76, 181))
@@ -230,7 +274,7 @@ class MainActivity : Activity() {
       topMargin = dp(8)
       bottomMargin = dp(8)
     })
-    status = text("Выберите сохранённый проект ATLANTA CAM.", 14).apply {
+    status = text("Выберите чертёж DXF или проект ATLANTA CAM.", 14).apply {
       id = R.id.status_message
       maxLines = 3
       ellipsize = TextUtils.TruncateAt.END
@@ -249,12 +293,24 @@ class MainActivity : Activity() {
 
   private fun dp(value: Int): Int = (resources.displayMetrics.density * value + 0.5f).toInt()
 
-  private data class OpenedProject(val uri: Uri, val name: String, val project: ProjectV5)
+  private data class OpenedDocument(
+    val uri: Uri,
+    val name: String,
+    val project: ProjectV5? = null,
+    val drawing: DxfDrawing? = null,
+  )
+
+  private data class LoadedDocument(
+    val document: OpenedDocument,
+    val operation: ProjectOperation? = null,
+    val scene: SketchScene? = null,
+  )
 
   companion object {
     private const val OPEN_PROJECT = 1
     private const val STATE_URI = "projectUri"
     private const val STATE_OPERATION = "selectedOperation"
     private const val MAX_FILE_BYTES = 6_000_000
+    private val DXF_SECTION = Regex("(?m)^[ \\t]*0[ \\t]*(?:\\r\\n|\\n|\\r)[ \\t]*SECTION[ \\t]*$")
   }
 }

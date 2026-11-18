@@ -22,6 +22,9 @@ import org.json.JSONObject;
 public class ProjectFixtureProvider extends ContentProvider {
   public static final String AUTHORITY = "cam.atlanta.android.test.fixtures";
   public static final String MULTIPLE_OPERATIONS = "multiple-operations.json";
+  public static final String LAYERED_DXF = "layered-profile.dxf";
+  public static final String INVALID_DXF = "broken-profile.dxf";
+  public static final String EMBEDDED_DXF = "embedded-dxf-project.json";
 
   @Override
   public boolean onCreate() {
@@ -30,7 +33,9 @@ public class ProjectFixtureProvider extends ContentProvider {
 
   @Override
   public String getType(Uri uri) {
-    return "application/json";
+    return LAYERED_DXF.equals(fixtureName(uri)) || INVALID_DXF.equals(fixtureName(uri))
+      ? "image/vnd.dxf"
+      : "application/json";
   }
 
   @Override
@@ -52,11 +57,9 @@ public class ProjectFixtureProvider extends ContentProvider {
     if (!"r".equals(mode)) throw new FileNotFoundException("Read-only fixture");
     String name = fixtureName(uri);
     if (name == null) throw new FileNotFoundException("Unknown test fixture");
-    String assetName = MULTIPLE_OPERATIONS.equals(name) ? "operation-project.json" : name;
     byte[] contents;
-    try (InputStream asset = Objects.requireNonNull(getContext()).getAssets().open(assetName)) {
-      byte[] bytes = readAsset(asset);
-      contents = MULTIPLE_OPERATIONS.equals(name) ? withDrillOperation(bytes) : bytes;
+    try {
+      contents = fixtureContents(name);
     } catch (IOException | JSONException error) {
       FileNotFoundException missing = new FileNotFoundException("Cannot read test fixture: " + name);
       missing.initCause(error);
@@ -91,26 +94,51 @@ public class ProjectFixtureProvider extends ContentProvider {
     if (uri.getPathSegments().size() != 1 || name == null) return null;
     return switch (name) {
       case "operation-project.json", "blank-project.json", "config.json", MULTIPLE_OPERATIONS -> name;
+      case LAYERED_DXF, INVALID_DXF, EMBEDDED_DXF -> name;
       default -> null;
     };
   }
 
-  private static byte[] readAsset(InputStream input) throws IOException {
-    ByteArrayOutputStream output = new ByteArrayOutputStream();
-    byte[] buffer = new byte[8192];
-    for (int size; (size = input.read(buffer)) != -1;) {
-      output.write(buffer, 0, size);
+  private byte[] fixtureContents(String name) throws IOException, JSONException {
+    return switch (name) {
+      case MULTIPLE_OPERATIONS -> withDrillOperation(readAsset("operation-project.json"));
+      case INVALID_DXF -> "BROKEN\nSECTION\n".getBytes(StandardCharsets.UTF_8);
+      case EMBEDDED_DXF -> embeddedDxf();
+      default -> readAsset(name);
+    };
+  }
+
+  private byte[] readAsset(String name) throws IOException {
+    try (InputStream input = Objects.requireNonNull(getContext()).getAssets().open(name)) {
+      ByteArrayOutputStream output = new ByteArrayOutputStream();
+      byte[] buffer = new byte[8192];
+      for (int size; (size = input.read(buffer)) != -1;) {
+        output.write(buffer, 0, size);
+      }
+      return output.toByteArray();
     }
-    return output.toByteArray();
+  }
+
+  private byte[] embeddedDxf() throws IOException, JSONException {
+    JSONObject project = new JSONObject(new String(readAsset("blank-project.json"), StandardCharsets.UTF_8));
+    project.remove("sketch");
+    project.put("rawDxf", new String(readAsset(LAYERED_DXF), StandardCharsets.UTF_8));
+    project.put("dxfName", LAYERED_DXF);
+    addOperation(project, "profile");
+    return project.toString().getBytes(StandardCharsets.UTF_8);
   }
 
   private static byte[] withDrillOperation(byte[] asset) throws JSONException {
     JSONObject project = new JSONObject(new String(asset, StandardCharsets.UTF_8));
-    project.getJSONArray("operations").put(
-      new JSONObject().put("id", "o1").put("kind", "drill").put("color", "#2345a2")
-    );
+    addOperation(project, "drill");
     project.getJSONObject("sketch").getJSONArray("items").getJSONObject(0)
       .put("drillOps", new JSONArray().put("o1"));
     return project.toString().getBytes(StandardCharsets.UTF_8);
+  }
+
+  private static void addOperation(JSONObject project, String kind) throws JSONException {
+    project.getJSONArray("operations").put(
+      new JSONObject().put("id", "o1").put("kind", kind).put("color", "#2345a2")
+    );
   }
 }

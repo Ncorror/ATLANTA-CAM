@@ -7,6 +7,8 @@ import android.graphics.Path
 import android.view.View
 import cam.atlanta.core.geometry.ArcSegment
 import cam.atlanta.core.geometry.Bounds2
+import cam.atlanta.core.geometry.Contour2
+import cam.atlanta.core.geometry.ContourAssembly
 import cam.atlanta.core.geometry.LineSegment
 import cam.atlanta.core.geometry.Point2
 import cam.atlanta.core.geometry.Segment2
@@ -42,16 +44,31 @@ class SketchPreview(context: Context) : View(context) {
   fun show(scene: SketchScene?) {
     val planContours = scene?.plan?.contours.orEmpty()
     val machiningContours = scene?.machining?.contours.orEmpty()
-    plan = planContours.flatMap { it.segments }
-    machining = machiningContours.flatMap { it.segments }
-    drillCenters = scene?.drillCenters.orEmpty()
-    bounds = drawingBounds(plan + machining, drillCenters)
-    contentDescription = if (planContours.isEmpty() && machiningContours.isEmpty() && drillCenters.isEmpty()) {
+    val centers = scene?.drillCenters.orEmpty()
+    val description = if (planContours.isEmpty() && machiningContours.isEmpty() && centers.isEmpty()) {
       "Геометрия эскиза отсутствует"
     } else {
       "Предпросмотр эскиза. Контуров на плане ${planContours.size}, в операции ${machiningContours.size}. " +
-        "Точек сверления ${drillCenters.size}."
+        "Точек сверления ${centers.size}."
     }
+    showGeometry(planContours, machiningContours, centers, description)
+  }
+
+  fun showDxf(drawing: ContourAssembly) {
+    showGeometry(drawing.contours, emptyList(), emptyList(), "Предпросмотр DXF. Контуров: ${drawing.contours.size}.")
+  }
+
+  private fun showGeometry(
+    planContours: List<Contour2>,
+    machiningContours: List<Contour2>,
+    centers: List<Point2>,
+    description: String,
+  ) {
+    plan = planContours.flatMap { it.segments }
+    machining = machiningContours.flatMap { it.segments }
+    drillCenters = centers
+    bounds = drawingBounds(plan + machining, centers)
+    contentDescription = description
     updatePaths()
     invalidate()
   }

@@ -6,6 +6,7 @@ import kotlin.math.hypot
 
 private const val JOIN_EPSILON = 1e-8
 private const val NESTING_CACHE_LIMIT = 200_000
+private const val SKETCH_LAYER = "SKETCH"
 
 enum class ContourSide { INSIDE, OUTSIDE, ON }
 
@@ -18,12 +19,19 @@ data class Contour2(
   val autoSide: ContourSide,
   val preserveJunctions: Boolean = false,
   val materialLeft: Int? = null,
+  val layer: String = SKETCH_LAYER,
 )
 
 data class ContourAssembly(val contours: List<Contour2>, val warnings: List<String>)
 
+data class LayeredSegment(val segment: Segment2, val layer: String)
+
 /** Connects segments from a single drawing layer in encounter order. Tolerance is in millimetres. */
-fun connectSegments(segments: List<Segment2>, tolerance: Double = 0.01): ContourAssembly {
+fun connectSegments(segments: List<Segment2>, tolerance: Double = 0.01): ContourAssembly =
+  connectLayeredSegments(segments.map { LayeredSegment(it, SKETCH_LAYER) }, tolerance)
+
+/** Connects within each layer while keeping contour order and nesting across the drawing. */
+fun connectLayeredSegments(segments: List<LayeredSegment>, tolerance: Double = 0.01): ContourAssembly {
   require(tolerance.isFinite() && tolerance > 0) { "Допуск соединения должен быть положительным числом." }
 
   val unique = segments.distinctBy { segmentKey(it) }
@@ -34,23 +42,24 @@ fun connectSegments(segments: List<Segment2>, tolerance: Double = 0.01): Contour
   while (unused.isNotEmpty()) {
     val first = unused.first()
     unused.remove(first)
+    val (segment, layer) = unique[first]
     val chain = ArrayDeque<Segment2>()
-    chain.add(unique[first])
+    chain.add(segment)
     var ambiguous = false
 
     for (append in listOf(true, false)) {
       while (unused.isNotEmpty()) {
         val point = activeEndpoint(chain, append)
-        val candidates = grid.nearby(point, unused)
+        val candidates = grid.nearby(point, layer, unused)
         if (candidates.isEmpty()) break
         if (candidates.size > 1) {
           ambiguous = true
           break
         }
         val candidate = candidates.single()
-        val segment = unique[candidate.index]
+        val candidateSegment = unique[candidate.index].segment
         unused.remove(candidate.index)
-        val next = if (append == candidate.atEnd) segment.reversed() else segment
+        val next = if (append == candidate.atEnd) candidateSegment.reversed() else candidateSegment
         if (append) {
           if (distance(point, next.start) > JOIN_EPSILON) chain.addLast(LineSegment(point, next.start))
           chain.addLast(next)
@@ -63,7 +72,7 @@ fun connectSegments(segments: List<Segment2>, tolerance: Double = 0.01): Contour
         if (gap <= JOIN_EPSILON) break
         if (gap <= tolerance) {
           val endpoint = activeEndpoint(chain, append)
-          if (grid.nearby(endpoint, unused).none { distance(endpoint, it.point) <= JOIN_EPSILON }) break
+          if (grid.nearby(endpoint, layer, unused).none { distance(endpoint, it.point) <= JOIN_EPSILON }) break
         }
       }
     }
@@ -81,6 +90,7 @@ fun connectSegments(segments: List<Segment2>, tolerance: Double = 0.01): Contour
         ambiguous = ambiguous,
         nesting = 0,
         autoSide = if (closed) ContourSide.OUTSIDE else ContourSide.ON,
+        layer = layer,
       ),
     )
   }
@@ -97,11 +107,12 @@ fun connectSegments(segments: List<Segment2>, tolerance: Double = 0.01): Contour
 private fun activeEndpoint(chain: ArrayDeque<Segment2>, append: Boolean): Point2 =
   if (append) chain.last().end else chain.first().start
 
-private data class SegmentKey(val first: Point2, val second: Point2, val arc: ArcKey?)
+private data class SegmentKey(val layer: String, val first: Point2, val second: Point2, val arc: ArcKey?)
 
 private data class ArcKey(val center: Point2, val midpoint: Point2, val sweepMagnitude: Double)
 
-private fun segmentKey(segment: Segment2): SegmentKey {
+private fun segmentKey(layered: LayeredSegment): SegmentKey {
+  val (segment, layer) = layered
   val start = segment.start.quantized()
   val end = segment.end.quantized()
   val xComparison = start.x.compareTo(end.x)
@@ -111,7 +122,7 @@ private fun segmentKey(segment: Segment2): SegmentKey {
   } else {
     null
   }
-  return if (startFirst) SegmentKey(start, end, arc) else SegmentKey(end, start, arc)
+  return if (startFirst) SegmentKey(layer, start, end, arc) else SegmentKey(layer, end, start, arc)
 }
 
 private fun Point2.quantized(): Point2 = Point2(quantize(x), quantize(y))
@@ -125,25 +136,26 @@ private fun quantize(value: Double): Double {
 
 private data class Endpoint(val index: Int, val atEnd: Boolean, val point: Point2)
 
-private data class GridCell(val x: Double, val y: Double)
+private data class GridCell(val x: Double, val y: Double, val layer: String)
 
-private class EndpointGrid(segments: List<Segment2>, private val tolerance: Double) {
+private class EndpointGrid(segments: List<LayeredSegment>, private val tolerance: Double) {
   private val cells = HashMap<GridCell, MutableList<Endpoint>>()
 
   init {
-    for ((index, segment) in segments.withIndex()) {
-      cells.getOrPut(cell(segment.start), ::mutableListOf).add(Endpoint(index, false, segment.start))
-      cells.getOrPut(cell(segment.end), ::mutableListOf).add(Endpoint(index, true, segment.end))
+    for ((index, layered) in segments.withIndex()) {
+      val (segment, layer) = layered
+      cells.getOrPut(cell(segment.start, layer), ::mutableListOf).add(Endpoint(index, false, segment.start))
+      cells.getOrPut(cell(segment.end, layer), ::mutableListOf).add(Endpoint(index, true, segment.end))
     }
   }
 
-  fun nearby(point: Point2, unused: Set<Int>): List<Endpoint> {
-    val center = cell(point)
+  fun nearby(point: Point2, layer: String, unused: Set<Int>): List<Endpoint> {
+    val center = cell(point, layer)
     val exact = mutableListOf<Endpoint>()
     val near = mutableListOf<Endpoint>()
     for (dx in -1..1) {
       for (dy in -1..1) {
-        val candidates = cells[GridCell(center.x + dx, center.y + dy)].orEmpty()
+        val candidates = cells[GridCell(center.x + dx, center.y + dy, layer)].orEmpty()
         for (candidate in candidates) {
           if (candidate.index !in unused) continue
           val gap = distance(point, candidate.point)
@@ -155,9 +167,10 @@ private class EndpointGrid(segments: List<Segment2>, private val tolerance: Doub
     return exact.ifEmpty { near }
   }
 
-  private fun cell(point: Point2): GridCell = GridCell(
+  private fun cell(point: Point2, layer: String): GridCell = GridCell(
     canonicalZero(floor(point.x / tolerance)),
     canonicalZero(floor(point.y / tolerance)),
+    layer,
   )
 }
 

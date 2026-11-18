@@ -73,6 +73,56 @@ class ProjectImportTest {
     assertEquals(blankSummary, text(activity, R.id.scene_summary))
   }
 
+  @Test
+  fun opensLayeredDxfAndKeepsItWhenAnInvalidDxfIsSelected() = withActivity { activity ->
+    open(activity, ProjectFixtureProvider.LAYERED_DXF)
+
+    await("two DXF layers") {
+      text(activity, R.id.scene_summary) == DXF_SUMMARY
+    }
+    assertEquals("DXF открыт", text(activity, R.id.status_message))
+    assertEquals(ProjectFixtureProvider.LAYERED_DXF, text(activity, R.id.project_name))
+    assertEquals(View.GONE, onMain { activity.findViewById<View>(R.id.operation_picker).visibility })
+    val drawing = previewDescription(activity)
+    assertTrue(drawing.startsWith("Предпросмотр DXF."))
+
+    open(activity, ProjectFixtureProvider.INVALID_DXF)
+    await("invalid DXF message") {
+      text(activity, R.id.status_message).startsWith("Не удалось открыть проект.")
+    }
+    assertEquals(ProjectFixtureProvider.LAYERED_DXF, text(activity, R.id.project_name))
+    assertEquals(DXF_SUMMARY, text(activity, R.id.scene_summary))
+    assertEquals(drawing, previewDescription(activity))
+  }
+
+  @Test
+  fun keepsEmbeddedDxfWhileSwitchingOperationsInAProjectWithoutSketch() = withActivity { activity ->
+    open(activity, ProjectFixtureProvider.EMBEDDED_DXF)
+
+    await("project's embedded DXF") {
+      text(activity, R.id.scene_summary) == DXF_SUMMARY
+    }
+    assertEquals("Проект открыт", text(activity, R.id.status_message))
+    assertEquals(ProjectFixtureProvider.EMBEDDED_DXF, text(activity, R.id.project_name))
+    val picker = onMain { activity.findViewById<Spinner>(R.id.operation_picker) }
+    assertEquals(View.VISIBLE, onMain { picker.visibility })
+    assertEquals(2, onMain { picker.count })
+    val drawing = previewDescription(activity)
+    assertTrue(drawing.startsWith("Предпросмотр DXF."))
+    onMain { picker.setSelection(1, false) }
+
+    await("second embedded DXF operation displayed") {
+      onMain {
+        val displayed = picker.selectedView as? TextView
+        displayed?.text?.toString() == picker.getItemAtPosition(1).toString()
+      }
+    }
+    instrumentation.waitForIdleSync()
+    await("embedded DXF project ready") { text(activity, R.id.status_message) == "Проект открыт" }
+    assertEquals(DXF_SUMMARY, text(activity, R.id.scene_summary))
+    assertEquals(drawing, previewDescription(activity))
+  }
+
   private fun open(activity: Activity, fixture: String) {
     val uri = Uri.Builder().scheme("content").authority(ProjectFixtureProvider.AUTHORITY)
       .appendPath(fixture).build()
@@ -138,4 +188,8 @@ class ProjectImportTest {
 
   private fun summary(plan: Int, machining: Int, drill: Int): String =
     "Контуры чертежа: $plan · В операции: $machining · Сверление: $drill"
+
+  companion object {
+    private const val DXF_SUMMARY = "Контуры чертежа: 2 · Слои: 2"
+  }
 }
